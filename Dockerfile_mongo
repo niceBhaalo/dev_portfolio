@@ -1,0 +1,6 @@
+# Dockerfile_mongo
+FROM mongo:7
+
+# Set the configuration file for MongoDB
+CMD ["mongod"]
+

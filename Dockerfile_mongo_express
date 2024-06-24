@@ -1,0 +1,6 @@
+# Dockerfile_mongo_express
+FROM mongo-express:latest
+
+# Set the default command to run mongo-express
+CMD ["mongo-express"]
+

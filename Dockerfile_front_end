@@ -1,0 +1,11 @@
+FROM node:18
+
+WORKDIR /app
+VOLUME /app
+
+RUN ls -al /app
+
+
+EXPOSE 3000
+CMD npm install && npm start
+

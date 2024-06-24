@@ -1,0 +1,304 @@
+.parentDivMain {
+	position: absolute;
+	min-width: 100%;
+	min-height: 100%;
+	max-width: 100%;
+	top: 0;
+	left: 0;
+}
+.LogInParent {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 25px;
+	border: 2px solid;
+	z-index: 5;
+}
+.login-container {
+    padding: 20px;
+    width: 300px;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.login-container input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-container input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-container button:hover {
+    background-color: #0056b3;
+}
+.linkText {
+	font-style: italic;
+	text-decoration: underline;
+	cursor: pointer;
+	text-align: center;
+}
+.errorText {
+	text-align: center;
+}
+
+.login-container.glowRed input {
+  border: 2px solid transparent; /* Start with transparent border */
+  animation: pulseRedBorder 1s ease-in-out 0s 2; /* Apply animation */
+}
+
+@keyframes pulseRedBorder {
+  0% { border-color: red; } /* Start with red border */
+  50% { border-color: transparent; } /* Pulse effect */
+  100% { border-color: red; } /* End with red border */
+}
+.crossButton {
+	position: absolute;
+	font-size: 1.5rem;
+	cursor: pointer;
+	text-align: right;
+	right: 5px;
+	top: 5px;
+}
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	opacity: 80%;
+	z-index: 0;
+}
+.showInputCardButton {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 40px;
+	height: 40px;
+	border-radius: 10px;
+	border: 1px solid;
+	padding: 5px;
+	text-align: center;
+	cursor: pointer;
+}
+.inputCardsParent {
+	position: fixed;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	min-height: 100%;
+	opacity: 80%;
+	z-index: 5;
+}
+.inputCard {
+	width: min(700px, 90vw);
+	height: min(900px, 93vh);
+	overflow: auto;
+	border: 3px solid;
+	border-radius: 10px;
+	margin: 20px;
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.section-container {
+	margin: 20px;
+	position: relative;
+	border: 2px solid #000; /* Border color */
+	border-radius: 15px; /* Rounded border */
+	padding: 20px; /* Padding inside the container */
+	background-color: #f9f9f9; /* Background color of the container */
+	min-width: 300px;
+}
+
+.section-name {
+  position: absolute;
+  top: -14px; /* Adjust the value to position it correctly */
+  left: 20px; /* Adjust the value to position it correctly */
+  background-color: #fff; /* Background color of the section name */
+  padding: 0 5px; /* Padding around the text */
+  font-weight: bold; /* Make the text bold */
+  font-size: 1.2em; /* Font size */
+  z-index: 1; /* Ensure it is on top */
+}
+.form-group {
+	margin: 5px;
+	background: transparent;
+	font-size: 1.2em;
+}
+.form-group input {
+	outline: none;
+	border-radius: 5px;
+	min-width: 100px;
+}
+.form-group select {
+	border-radius: 5px;
+	min-width: 100px;
+
+}
+.special-input {
+	margin: 5px;
+	font-size: 1.2em;
+}
+.special-input input {
+	outline: none;
+	border-radius: 5px;
+	min-width: 100px;
+}
+.special-input button {
+	width: 20px;
+	height: 20px;
+	padding: 0;
+	border-radius: 5px;
+	outline: none;
+}
+.ratingSlider {
+	outline: none;
+	border-radius: 5px;
+	-webkit-appearance: none;
+	width: 50%;
+	min-width: 200px;
+	margin: 0px 20px 0px 20px;
+	height: 8px;
+	background: #ddd;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+.ratingSlider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #4CAF50;
+	cursor: pointer;
+}
+
+.ratingSlider::-moz-range-thumb {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #4CAF50;
+	cursor: pointer;
+}
+.endButton {
+	width: 75px;
+	height: 20px;
+	border: 1px solid;
+	border-radius: 2px;
+	margin: 0px 0px 10px 10px;
+	cursor: pointer;
+}
+.endButton:hover {
+	box-shadow: 0 0px 5px 2px red;
+}
+
+.endButton:active {
+	box-shadow: 0 0px 5px 2px green;
+	transform: translate(1px, 1px); /* Slight downward movement */
+}
+
+.buttonSection {
+	margin: 20px 20px 10px 20px;
+	position: relative;
+	min-width: 300px;
+}
+.DisplayCardsContainer {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.CardContainer {
+	width: min(300px, 19vw);
+	display: flex;
+	flex-direction: column;
+}
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+/* Card.css */
+
+.CardContainer {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.CardTitle {
+  background-color: #f8f8f8;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.CardPicture {
+  padding: 10px;
+  text-align: center;
+}
+
+.CardPicture img {
+  max-width: 100%;
+}
+
+.CardData {
+  padding: 10px;
+  background-color: #fff;
+}
+
+.CardData span {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.CardData div {
+  margin-bottom: 10px;
+}
+.DeleteDialogBox{
+	position: fixed;
+	width: min(300px, 50vw);
+	height: 300px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid black;
+	border-radius: 5px;
+
+}
+
+/* Add more styles as needed */

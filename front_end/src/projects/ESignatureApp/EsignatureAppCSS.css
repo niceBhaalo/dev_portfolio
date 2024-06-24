@@ -1,0 +1,52 @@
+.EsigParentDiv {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100%;
+	min-width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.EsigParentDiv.light {
+	background-color: white;
+}
+.EsigParentDiv.dark {
+	background-color: black;
+}
+.EsigTitle {
+	font-size: 3.5rem;
+	font-weight: 100;
+}
+.EsigTitle.light {
+	color: black;
+}
+.EsigTitle.dark {
+	color: white;
+}
+.EsigCard {
+	display: flex;
+	flex-direction: column;
+	background-color: #f2f2f2;
+	border-radius: 8px;
+	padding: 20px; 
+	border: 2px solid;
+	margin-bottom: 20px;
+	text-align: left;
+	margin-top: 20px;
+	width: min(600px, 85vw);
+}
+.EsigCard.light {
+	border-color: black;
+	background-color: white;
+	color: black;
+}
+.EsigCard.dark {
+	border-color: white;
+	background-color: black;
+	color: white;
+}
+.EsigCardTitle {
+	font-style: italic;
+}

@@ -1,0 +1,75 @@
+.MDParentDiv {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+}
+.MDParentDiv.light {
+	color: black;
+	background-color: white;
+}
+.MDParentDiv.dark {
+	color: white;
+	background-color: black;
+}
+.image-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 90%;
+	margin-top: 20px;
+	border: 2px solid;
+	border-radius: 5px;
+	padding: 10px;
+	flex-direction: column;
+}
+.image-container.light {
+	border-color: black;
+}
+.image-container.dark {
+	border-color: white;
+}
+.image {
+	max-width: 75%;
+	outline: 3px solid #000000;
+	boxShadow: 0 4px 8px rgba(0, 0, 0, 1);
+	borderRadius: 5px;
+}
+.remove-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 10px;
+}
+.image-selector-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.image-selector-label {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.image-selector-input {
+    display: none;
+}
+.metadata-container {
+	width: 100%;
+	word-wrap: break-word;
+
+}

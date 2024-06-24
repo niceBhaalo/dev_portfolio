@@ -1,0 +1,107 @@
+:root {
+	--bg-color: white;
+	--fg-color: black;
+}
+
+.SliderPuzzleContainer {
+	display: flex;
+	position: absolute;
+	left: 0;
+	top: 0;
+	min-width: 100%;
+	min-height: 100%;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background-color: var(--bg-color);
+}
+
+.SliderPuzzleContainer.light {
+	--bg-color: white;
+	--fg-color: black;
+}
+
+.SliderPuzzleContainer.dark {
+	--bg-color: black;
+	--fg-color: white;
+}
+
+.SliderText {
+	color: var(--fg-color);
+}
+
+.SliderTitle {
+	font-size: 30px;
+}
+
+.SliderInstructions {
+	font-size: 20px;
+}
+
+.SlidersContainer {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.SliderBackground::before {
+	content: '';
+	position: absolute;
+	top: -3px;
+	bottom: 0;
+	left: 50%;
+	width: 0; /* No width, as we're creating a vertical line */
+	border-left: 2px dotted red; /* Adjust the width and style of the dotted line */
+	transform: translateX(-50%); /* Center the line horizontally */
+	z-index: 2; /* Lower z-index than the slider thumb */
+	height: 110%;
+}
+
+.SliderBackground {
+	position: relative;
+	background-color: var(--fg-color); /* Set the background color of the track */
+	border-radius: min(20px, 5vh);
+	width: 500px;
+	height: min(40px, 10vh);
+	margin-top: 7px;
+	margin-bottom: 7px;
+	z-index: 1; /* Ensure it is above the pseudo-element but below the thumb */
+}
+
+.Slider {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	position: relative; /* Establish a stacking context for the thumb */
+	z-index: 3; /* Ensure slider itself is in the correct stacking order */
+	margin: 0;
+}
+
+.Slider::-webkit-slider-runnable-track {
+	width: 100%; /* Set the width of the track */
+	height: min(40px, 10vh);
+	background-color: transparent; /* Set the background color of the track */
+}
+
+.Slider::-webkit-slider-thumb {
+	position: relative;
+	-webkit-appearance: none; /* Override default appearance */
+	width: min(40px, 10vh);
+	height: min(40px, 10vh);
+	background-color: var(--bg-color); /* Set the background color of the thumb */
+	border-radius: 50%; /* Make the thumb circular */
+	cursor: pointer; /* Set cursor style */
+	outline: 2px solid var(--fg-color);
+	z-index: 1000; /* Highest z-index to ensure it's above everything else */
+}
+
+.Slider::-webkit-slider-thumb:hover {
+	background-color: #ffdc7a; /* Corrected color value */
+}
+
+.Slider.green-thumb::-webkit-slider-thumb {
+	background-color: green; /* Green color when value is 50 */
+}

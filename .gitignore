@@ -1,4 +1,11 @@
-/back_end/node_modules
+back_end/node_modules/
 
-/front_end/node_modules
+front_end/node_modules/
 
+.git/
+
+geany.geany
+
+front_end/.env
+
+front_end/ssl/
