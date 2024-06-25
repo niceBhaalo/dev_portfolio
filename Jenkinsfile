@@ -1,5 +1,5 @@
 pipeline {
-
+	agents any
 	environment {
         GIT_CREDENTIALS_ID = '2010b226-8d51-49e7-a799-7742b0378723' // Replace with your credentials ID
     }
