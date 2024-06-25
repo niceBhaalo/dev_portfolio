@@ -4,8 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile_front_end
-    volumes:
-      - /home/fazeel/dev_portfolio/front_end:/app
     ports:
       - 3000:3000
   back_end:
@@ -13,8 +11,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile_back_end
-    volumes:
-      - /home/fazeel/dev_portfolio/back_end:/app
     ports:
       - 5000:5000
   mongo:
@@ -30,19 +26,6 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-  mongo_express:
-    container_name: dp_mexpress
-    build:
-      context: .
-      dockerfile: Dockerfile_mongo_express
-    ports:
-      - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-      ME_CONFIG_MONGODB_SERVER: mongo
-      ME_CONFIG_BASICAUTH_USERNAME: ${MONGOEXPRESS_USERNAME}
-      ME_CONFIG_BASICAUTH_PASSWORD: ${MONGOEXPRESS_PASSWORD}
 volumes:
   mongo-data:
     external: true

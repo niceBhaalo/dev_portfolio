@@ -1,4 +1,4 @@
-const express = require('express');
+lconst express = require('express');
 const router = express.Router();
 const { MongoClient, ObjectId, GridFSBucket } = require('mongodb');
 const mongoose = require('mongoose');
@@ -21,8 +21,8 @@ async function connectToMongoDB() {
 			useNewUrlParser: true, 
 			useUnifiedTopology: true,
 			auth: {
-				username: process.env.MONGO_INITDB_ROOT_USERNAME || 'admin',
-				password: process.env.MONGO_INITDB_ROOT_PASSWORD || 'password'
+				username: process.env.MONGO_INITDB_ROOT_USERNAME,
+				password: process.env.MONGO_INITDB_ROOT_PASSWORD
 			}
 		 });
         await client.connect();

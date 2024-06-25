@@ -1,0 +1,14 @@
+FROM node:18
+
+WORKDIR /app
+
+COPY front_end/package*.json ./
+
+RUN npm install
+
+COPY front_end/ ./
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
+
