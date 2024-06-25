@@ -17,6 +17,9 @@ pipeline {
                       userRemoteConfigs: [[url: 'https://github.com/niceBhaalo/dev_portfolio', 
                                            credentialsId: env.GIT_CREDENTIALS_ID]]])
 					sh 'ls -la'
+					withCredentials([usernamePassword(credentialsId: 'mongo-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+						writeFile file: '.env', text: "USERNAME=${env.USERNAME}\nPASSWORD=${env.PASSWORD}"
+					}
                 }
             }
         }
