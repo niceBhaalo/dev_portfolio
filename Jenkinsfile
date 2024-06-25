@@ -20,6 +20,7 @@ pipeline {
 					withCredentials([usernamePassword(credentialsId: 'mongo-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 						writeFile file: '.env', text: "USERNAME=${env.USERNAME}\nPASSWORD=${env.PASSWORD}"
 					}
+					sh 'cat .env'
                 }
             }
         }
