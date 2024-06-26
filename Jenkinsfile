@@ -23,18 +23,39 @@ pipeline {
                 }
             }
         }
+        stage ('Installing Libraries') {
+			steps {
+				script {
+					dir('front_end') {
+						nodejs(nodeJSInstallationName: env.NODEJS_INSTALLATION) {	
+							sh 'pwd'
+							sh 'npm -v'
+							sh 'npm install'
+						}
+					}
+					dir('back_end') {
+						nodejs(nodeJSInstallationName: env.NODEJS_INSTALLATION) {	
+							sh 'pwd'
+							sh 'npm -v'
+							sh 'npm install'
+						}
+					}
+				}
+			}
+		}
         stage('Creating Docker Containers') {
 			steps {
 				script {
 					sh 'pwd'
-					sh 'docker-compose -f docker-compose-jenkins.yml up -d'
+					 // sh 'docker-compose -f docker-compose-jenkins.yml up -d'
 				}
 			}
         }
         stage ('Closing Up') {
 			steps {
 				script {
-					sh 'docker-compose down'
+					sh 'pwd'
+					// sh 'docker-compose down'
 				}
 			}
         
@@ -45,7 +66,6 @@ pipeline {
 					dir('front_end') {
 						nodejs(nodeJSInstallationName: env.NODEJS_INSTALLATION) {	
 							sh 'pwd'
-							sh 'curl http://nexus:8081/repository/npmJenkinsProxy'
 							sh 'npm -v'
 							sh 'npm run build'
 						}
