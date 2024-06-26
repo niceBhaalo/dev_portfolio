@@ -31,7 +31,6 @@ pipeline {
 							sh 'pwd'
 							sh 'npm -v'
 							sh 'npm install'
-							sh 'ls node_modules'
 						}
 					}
 					dir('back_end') {
@@ -39,7 +38,6 @@ pipeline {
 							sh 'pwd'
 							sh 'npm -v'
 							sh 'npm install'
-							sh 'ls node_modules'
 						}
 					}
 				}
@@ -75,15 +73,11 @@ pipeline {
 					// Archive the build artifact (assuming the artifact is in the 'build' directory)
 					archiveArtifacts artifacts: 'front_end/build/**', allowEmptyArchive: false
                     
-                    sh 'apt-get update && apt-get install -y zip'
-
-					sh 'cd front_end/build && zip -r dev_portfolio_artifact.zip *'
-
 					// Upload the artifact to the Nexus repository
 					nexusArtifactUploader artifacts: [[
 						artifactId: 'dev_portfolio',
 						classifier: '',
-						file: 'front_end/build/dev_portfolio_artifact', // Path to the artifact file
+						file: 'front_end/build', // Path to the artifact file
 						type: 'zip'
 					]],
 					credentialsId: 'jenkinsNexusID', // Nexus credentials stored in Jenkins
