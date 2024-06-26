@@ -31,6 +31,7 @@ pipeline {
 							sh 'pwd'
 							sh 'npm -v'
 							sh 'npm install'
+							sh 'ls node_modules'
 						}
 					}
 					dir('back_end') {
@@ -38,6 +39,7 @@ pipeline {
 							sh 'pwd'
 							sh 'npm -v'
 							sh 'npm install'
+							sh 'ls node_modules'
 						}
 					}
 				}
