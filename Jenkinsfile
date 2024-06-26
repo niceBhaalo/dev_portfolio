@@ -43,7 +43,7 @@ pipeline {
 			steps {
 				script {
 					dir('front_end') {
-						nodejs(nodeJSInstallationName: env.NODEJS_INSTALLATION, configId: 'nodejs') {	
+						nodejs(nodeJSInstallationName: env.NODEJS_INSTALLATION) {	
 							sh 'pwd'
 							sh 'curl http://nexus:8081/repository/npmJenkinsProxy'
 							sh 'npm -v'
