@@ -12,11 +12,9 @@ pipeline {
 		stage('Checkout') {
             steps {
                 script {
-					echo 'Hello'
                     checkout([$class: 'GitSCM', branches: [[name: '*/main']],
                       userRemoteConfigs: [[url: 'https://github.com/niceBhaalo/dev_portfolio', 
                                            credentialsId: env.GIT_CREDENTIALS_ID]]])
-					sh 'ls -la'
 					withCredentials([usernamePassword(credentialsId: 'mongo-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
 						writeFile file: '.env', text: "MONGO_INITDB_ROOT_USERNAME=${env.USERNAME}\nMONGO_INITDB_ROOT_PASSWORD=${env.PASSWORD}"
 						writeFile file: 'back_end./env', text: "MONGO_INITDB_ROOT_USERNAME=${env.USERNAME}\nMONGO_INITDB_ROOT_PASSWORD=${env.PASSWORD}"
@@ -45,6 +43,7 @@ pipeline {
 				script {
 					dir('front_end') {
 						sh 'pwd'
+						sh 'npm -v'
 						sh 'npm run build'
 					}
 					
