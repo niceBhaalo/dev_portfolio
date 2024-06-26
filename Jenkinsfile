@@ -82,7 +82,7 @@ pipeline {
 					]],
 					credentialsId: 'jenkinsNexusID', // Nexus credentials stored in Jenkins
 					groupId: 'fazeel',
-					nexusUrl: 'http://nexus:8081',
+					nexusUrl: 'nexus:8081',
 					nexusVersion: 'nexus3',
 					protocol: 'http',
 					repository: 'dev_portfolio_artifacts',
