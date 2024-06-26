@@ -2,6 +2,7 @@ pipeline {
 	agent any
 	environment {
         GIT_CREDENTIALS_ID = '2010b226-8d51-49e7-a799-7742b0378723' // Replace with your credentials ID
+        NODEJS_INSTALLATION = 'npmNexus'
     }
     stages {
 		stage('Clean Workspace') {
@@ -42,11 +43,12 @@ pipeline {
 			steps {
 				script {
 					dir('front_end') {
-						sh 'pwd'
-						sh 'npm -v'
-						sh 'npm run build'
+						nodejs(nodeJSInstallationName: env.NODEJS_INSTALLATION, configId: 'nodejs') {	
+							sh 'pwd'
+							sh 'npm -v'
+							sh 'npm run build'
+						}
 					}
-					
 					// Archive the build artifact (assuming the artifact is in the 'build' directory)
 					archiveArtifacts artifacts: 'front_end/build/**', allowEmptyArchive: false
 					sh 'cd front_end/build && zip -r dev_portfolio_artifact.zip *'
