@@ -69,7 +69,7 @@ pipeline {
 						nodejs(nodeJSInstallationName: env.NODEJS_INSTALLATION) {	
 							sh 'pwd'
 							sh 'npm -v'
-							sh 'npm run build'
+							sh 'CI=false npm run build'
 						}
 					}
 					// Archive the build artifact (assuming the artifact is in the 'build' directory)
