@@ -1,6 +1,7 @@
 # Dockerfile_mongo
 FROM mongo:7
 
+COPY mongod.conf /etc/mongod.conf
 # Set the configuration file for MongoDB
 CMD ["mongod"]
 

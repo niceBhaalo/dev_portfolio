@@ -1,3 +1,4 @@
+env_file: .env
 services:
   front_end: 
     container_name: dp_front
@@ -20,7 +21,6 @@ services:
       dockerfile: Dockerfile_mongo
     volumes:
       - mongo-data:/data/db
-      - /home/fazeel/dev_portfolio/mongod.conf:/etc/mongod.conf
     ports:
       - 27018:27017
     environment:

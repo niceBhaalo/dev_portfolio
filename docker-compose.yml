@@ -24,12 +24,13 @@ services:
       dockerfile: Dockerfile_mongo
     volumes:
       - mongo-data:/data/db
-      - /home/fazeel/dev_portfolio/mongod.conf:/etc/mongod.conf
     ports:
       - 27018:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    env_file: .env
+  
   mongo_express:
     container_name: dp_mexpress
     build:
@@ -43,6 +44,8 @@ services:
       ME_CONFIG_MONGODB_SERVER: mongo
       ME_CONFIG_BASICAUTH_USERNAME: ${MONGOEXPRESS_USERNAME}
       ME_CONFIG_BASICAUTH_PASSWORD: ${MONGOEXPRESS_PASSWORD}
+    env_file: .env
+    
 volumes:
   mongo-data:
     external: true

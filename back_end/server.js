@@ -2,6 +2,10 @@ const express = require('express');
 const dataRoutes = require('./routes/dataRoutes');
 const weatherRoutes = require('./routes/weatherRoutes');
 const cors = require('cors');
+require('dotenv').config();
+
+console.log("PORT: ", process.env.PORT);
+	console.log("USERNAME: ", process.env.MONGO_INITDB_ROOT_USERNAME);
 
 const app = express();
 app.use(express.json());

@@ -1,4 +1,4 @@
-lconst express = require('express');
+const express = require('express');
 const router = express.Router();
 const { MongoClient, ObjectId, GridFSBucket } = require('mongodb');
 const mongoose = require('mongoose');
@@ -8,6 +8,7 @@ const multer = require('multer');
 const { GridFsStorage } = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const { Readable } = require('stream');
+require('dotenv').config(); // Make sure this is included at the top
 
 let db;
 let gfs;
@@ -15,6 +16,7 @@ let gfs;
 const uri = process.env.MONGODB_URI || 'mongodb://dp_mongo:27017';
 const dbName = process.env.DB_NAME || 'signatures';
 async function connectToMongoDB() {
+	console.log("USERNAME ROUTES: ", process.env.MONGO_INITDB_ROOT_USERNAME);
     try {
         const client = new MongoClient(uri, 
         { 

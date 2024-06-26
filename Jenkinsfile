@@ -18,11 +18,56 @@ pipeline {
                                            credentialsId: env.GIT_CREDENTIALS_ID]]])
 					sh 'ls -la'
 					withCredentials([usernamePassword(credentialsId: 'mongo-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-						writeFile file: '.env', text: "USERNAME=${env.USERNAME}\nPASSWORD=${env.PASSWORD}"
+						writeFile file: '.env', text: "MONGO_INITDB_ROOT_USERNAME=${env.USERNAME}\nMONGO_INITDB_ROOT_PASSWORD=${env.PASSWORD}"
+						writeFile file: 'back_end./env', text: "MONGO_INITDB_ROOT_USERNAME=${env.USERNAME}\nMONGO_INITDB_ROOT_PASSWORD=${env.PASSWORD}"
 					}
-					sh 'cat .env'
                 }
             }
         }
+        stage('Creating Docker Containers') {
+			steps {
+				script {
+					sh 'pwd'
+					sh 'docker-compose -f docker-compose-jenkins.yml' up -d
+				}
+			}
+        }
+        stage ('Closing Up') {
+			steps {
+				script {
+					sh 'docker-compose down'
+				}
+			}
+        
+        }
+        stage('Making Build') {
+			steps {
+				script {
+					dir('front_end') {
+						sh 'npm run build'
+					}
+					
+					// Archive the build artifact (assuming the artifact is in the 'build' directory)
+					archiveArtifacts artifacts: 'front_end/build/**', allowEmptyArchive: false
+					sh 'cd front_end/build && zip -r dev_portfolio_artifact.zip *'
+
+					// Upload the artifact to the Nexus repository
+					nexusArtifactUploader artifacts: [[
+						artifactId: 'dev_portfolio',
+						classifier: '',
+						file: 'front_end/build/dev_portfolio_artifact', // Path to the artifact file
+						type: 'zip'
+					]],
+					credentialsId: 'jenkinsNexusID', // Nexus credentials stored in Jenkins
+					groupId: 'fazeel',
+					nexusUrl: 'http://nexus:8081',
+					nexusVersion: 'nexus3',
+					protocol: 'http',
+					repository: 'dev_portfolio_artifacts',
+					version: '1.0.0'
+				}
+			}
+        }
+
 	}
 }
