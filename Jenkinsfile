@@ -45,6 +45,7 @@ pipeline {
 					dir('front_end') {
 						nodejs(nodeJSInstallationName: env.NODEJS_INSTALLATION, configId: 'nodejs') {	
 							sh 'pwd'
+							sh 'curl http://nexus:8081/repository/npmJenkinsProxy'
 							sh 'npm -v'
 							sh 'npm run build'
 						}
