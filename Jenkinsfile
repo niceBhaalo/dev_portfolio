@@ -28,7 +28,7 @@ pipeline {
 			steps {
 				script {
 					sh 'pwd'
-					sh 'docker-compose -f docker-compose-jenkins.yml' up -d
+					sh 'docker-compose -f docker-compose-jenkins.yml up -d'
 				}
 			}
         }
