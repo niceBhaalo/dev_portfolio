@@ -23,7 +23,7 @@ pipeline {
                 }
             }
         }
-        stage ('Installing Libraries') {
+        stage('Installing Libraries') {
 			steps {
 				script {
 					dir('front_end') {
@@ -51,7 +51,7 @@ pipeline {
 				}
 			}
         }
-        stage ('Closing Up') {
+        stage('Closing Up') {
 			steps {
 				script {
 					sh 'pwd'
