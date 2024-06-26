@@ -1,4 +1,3 @@
-env_file: .env
 services:
   front_end: 
     container_name: dp_front
@@ -26,6 +25,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    env_file: .env
+
 volumes:
   mongo-data:
     external: true
