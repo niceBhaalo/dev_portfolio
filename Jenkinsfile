@@ -44,6 +44,7 @@ pipeline {
 			steps {
 				script {
 					dir('front_end') {
+						sh 'pwd'
 						sh 'npm run build'
 					}
 					
