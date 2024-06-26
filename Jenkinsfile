@@ -74,6 +74,9 @@ pipeline {
 					}
 					// Archive the build artifact (assuming the artifact is in the 'build' directory)
 					archiveArtifacts artifacts: 'front_end/build/**', allowEmptyArchive: false
+                    
+                    sh 'apt-get update && apt-get install -y zip'
+
 					sh 'cd front_end/build && zip -r dev_portfolio_artifact.zip *'
 
 					// Upload the artifact to the Nexus repository
