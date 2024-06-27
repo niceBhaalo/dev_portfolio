@@ -68,8 +68,15 @@ pipeline {
 							sh 'pwd'
 							sh 'npm -v'
 							sh 'CI=false npm run build'
+							sh 'ls -al'
 						}
 					}
+				}
+			}
+		}
+		stage ('Uploading Artifact') {
+			steps {
+				script {
 					// Archive the build artifact (assuming the artifact is in the 'build' directory)
 					archiveArtifacts artifacts: 'front_end/build/**', allowEmptyArchive: false
                     
