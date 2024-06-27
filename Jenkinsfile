@@ -91,7 +91,8 @@ pipeline {
         stage ('Packing Backend') {
 			steps {
 				script {
-						'sh tar -czvf back_end.tar.gz back_end' 
+					'sh ls -al'
+					'sh tar -czvf back_end.tar.gz back_end' 
 				}
 			}
         }
