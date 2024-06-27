@@ -69,6 +69,7 @@ pipeline {
 							sh 'npm -v'
 							sh 'CI=false npm run build'
 							sh 'ls -al'
+							sh 'tar -czvf build.tar.gz build'
 						}
 					}
 				}
@@ -84,8 +85,8 @@ pipeline {
 					nexusArtifactUploader artifacts: [[
 						artifactId: 'dev_portfolio',
 						classifier: '',
-						file: 'front_end/build', // Path to the artifact file
-						type: 'zip'
+						file: 'front_end/build.tar.gz', // Path to the artifact file
+						type: 'tar'
 					]],
 					credentialsId: 'jenkinsNexusID', // Nexus credentials stored in Jenkins
 					groupId: 'fazeel',
