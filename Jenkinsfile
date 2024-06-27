@@ -3,8 +3,8 @@ pipeline {
 	environment {
         GIT_CREDENTIALS_ID = '2010b226-8d51-49e7-a799-7742b0378723' // Replace with your credentials ID
         NODEJS_INSTALLATION = 'npmNexus'
-        frontVersion = env.FRONT_VERSION ? : 1
-        backVersion = env.BACK_VERSION ? : 1
+        frontVersion = env.FRONT_VERSION ?: '1'
+        backVersion = env.BACK_VERSION ?: '1'
     }
     stages {
 		stage('Clean Workspace') {
