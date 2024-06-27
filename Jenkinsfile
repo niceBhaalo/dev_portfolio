@@ -3,6 +3,8 @@ pipeline {
 	environment {
         GIT_CREDENTIALS_ID = '2010b226-8d51-49e7-a799-7742b0378723' // Replace with your credentials ID
         NODEJS_INSTALLATION = 'npmNexus'
+        frontVersion = env.FRONT_VERSION ?: 1
+        backVersion = env.BACK_VERSION ?: 1
     }
     stages {
 		stage('Clean Workspace') {
@@ -28,15 +30,11 @@ pipeline {
 				script {
 					dir('front_end') {
 						nodejs(nodeJSInstallationName: env.NODEJS_INSTALLATION) {	
-							sh 'pwd'
-							sh 'npm -v'
 							sh 'npm install'
 						}
 					}
 					dir('back_end') {
 						nodejs(nodeJSInstallationName: env.NODEJS_INSTALLATION) {	
-							sh 'pwd'
-							sh 'npm -v'
 							sh 'npm install'
 						}
 					}
@@ -58,30 +56,22 @@ pipeline {
 					// sh 'docker-compose down'
 				}
 			}
-        
         }
-        stage('Making Build') {
+        stage('Making Front End Build') {
 			steps {
 				script {
 					dir('front_end') {
 						nodejs(nodeJSInstallationName: env.NODEJS_INSTALLATION) {	
-							sh 'pwd'
-							sh 'npm -v'
 							sh 'CI=false npm run build'
-							sh 'ls -al'
 							sh 'tar -czvf build.tar.gz build'
 						}
 					}
 				}
 			}
 		}
-		stage ('Uploading Artifact') {
+		stage ('Uploading Front End Artifact') {
 			steps {
 				script {
-					// Archive the build artifact (assuming the artifact is in the 'build' directory)
-					archiveArtifacts artifacts: 'front_end/build/**', allowEmptyArchive: false
-                    
-					// Upload the artifact to the Nexus repository
 					nexusArtifactUploader artifacts: [[
 						artifactId: 'dev_portfolio',
 						classifier: '',
@@ -94,7 +84,33 @@ pipeline {
 					nexusVersion: 'nexus3',
 					protocol: 'http',
 					repository: 'dev_portfolio_artifacts',
-					version: '1.0.0'
+					version: '1.0.' + env.FRONT_VERSION
+				}
+			}
+        }
+        stage ('Packing Backend') {
+			steps {
+				script {
+						'sh tar -czvf back_end.tar.gz back_end' 
+				}
+			}
+        }
+        stage ('Uploading Backend') {
+			steps {
+				script {
+					nexusArtifactUploader artifacts: [[
+						artifactId: 'dev_portfolio_back',
+						classifier: '',
+						file: 'back_end.tar.gz', // Path to the artifact file
+						type: 'tar'
+					]],
+					credentialsId: 'jenkinsNexusID', // Nexus credentials stored in Jenkins
+					groupId: 'fazeel',
+					nexusUrl: 'nexus:8081',
+					nexusVersion: 'nexus3',
+					protocol: 'http',
+					repository: 'dev_portfolio_artifacts',
+					version: '1.0.' + env.BACK_VERSION
 				}
 			}
         }
