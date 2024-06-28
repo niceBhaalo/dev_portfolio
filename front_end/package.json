@@ -1,7 +1,7 @@
 {
   "name": "front_end",
   "version": "0.1.0",
-  "proxy": "http://back_end:5000",
+  "proxy": "http://dp_back:5000",
   "private": true,
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
