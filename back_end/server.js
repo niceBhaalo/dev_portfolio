@@ -13,7 +13,7 @@ app.use(express.json());
 const corsOptions = {
     origin: ['172.21.0.0'],
 };
-app.use(cors(corsOptions)l);
+app.use(cors(corsOptions));
 app.use('/api', dataRoutes);
 app.use('/weather', weatherRoutes);
 
