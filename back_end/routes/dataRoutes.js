@@ -81,6 +81,7 @@ router.post('/store-signature', async (req, res) => {
 });
 
 router.post('/get-total-number', async (req, res) => {
+	console.log("Getting Total Number HERE")
 	try {
 		const totalNumber = await db.collection('user_data').countDocuments();
 		res.json({ total: totalNumber });

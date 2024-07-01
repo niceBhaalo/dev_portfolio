@@ -18,7 +18,7 @@ import SubscribeApp from './projects/SubscribeApp/SubscribeApp.jsx';
 import MoviesDatabase from './projects/MoviesDatabase/MoviesDatabase.jsx';
 
 import {ThemeContext, themes } from './contexts/ThemeContext.jsx';
-
+//Changed
 function App() {
 
 	const [theme, setTheme] = useState(themes.light);
