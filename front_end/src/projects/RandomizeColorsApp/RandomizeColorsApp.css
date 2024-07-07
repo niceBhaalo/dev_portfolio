@@ -1,0 +1,57 @@
+.RCAContainer {
+	display: grid;
+	top: 0;
+	left: 0;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	min-width: 370px;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.RCATitleContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	width: max(50vw, 350px);
+	top: 5vh;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 1px solid #23fc5d;
+	border-radius: 10px;
+	background-color: #c1f5cf80;
+	white-space: nowrap;
+	overflow: hidden; /* Hide overflow text */
+
+}
+.RCATitle {
+	width: fit-content;
+	opacity: 1;
+	text-align: center;
+	font-size: 2rem;
+}
+.RCASubtitle {
+	width: fit-content;
+	opacity: 1;
+	text-align: center;
+	font-size: 1.4rem;
+}
+.RCAColorColumn {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.RCAHexButton {
+  background-color: #000000; /* Green background */
+  color: white; /* White text */
+  padding: 10px; /* Padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Cursor style */
+  margin-bottom: 10px;
+  max-width: 70%;
+  text-align: center;
+}

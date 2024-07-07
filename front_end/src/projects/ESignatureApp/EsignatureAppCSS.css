@@ -18,6 +18,7 @@
 .EsigTitle {
 	font-size: 3.5rem;
 	font-weight: 100;
+	text-align: center;
 }
 .EsigTitle.light {
 	color: black;
@@ -49,4 +50,7 @@
 }
 .EsigCardTitle {
 	font-style: italic;
+}
+.EsigCard:last-child {
+	margin-bottom: 8vh;
 }

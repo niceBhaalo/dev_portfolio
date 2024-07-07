@@ -18,24 +18,30 @@
 .file-tab {
 	cursor: pointer;
 	user-select: none;
-	width: 15vw;
+	width: max(15vw, 100px);
 	height: 5vh;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
-	margin: 30px;
+	margin: 5px;
 	margin-bottom: 0;
+	font-size: 1.3rem;
 }
-.poll-window {
-	width: max(600px, 75vw);
+.PollingWindow {
+	width: max(95vw, 350px);
 }
 .poll-list-window {
 	min-height: 200px;
 	border-radius: 10px;
 }
+.PollingTabsContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
 .file-tab-small {
 	cursor: pointer;
 	user-select: none;
-	width: 10vw;
+	width: max(13vw, 90px);
 	height: 3vh;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;

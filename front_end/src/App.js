@@ -63,26 +63,118 @@ function App() {
 
 function Home() {
 	const theme = useContext(ThemeContext);
-
+	
+	const allLinks = [
+	{
+		"route": "/esignature",
+		"name": "Date of Births Database",
+		"description": ["Enter Your Name and DoB into a mongoDB.", 
+			"Query for people or dates from the database.", 
+			"Uses axios, useState and useEffect."]
+	},
+	{
+		"route": "/randomizeColors",
+		"name": "Create Color Mixtures for Inspiration",
+		"description": ["Click on the hexcodes to generate a new random color.", 
+			"Use the arrow buttons to view previous colors.", 
+			"Uses fortawesome icons."]
+	},
+	{
+		"route": "/polling",
+		"name": "Online Polls",
+		"description": ["Answer some questions to see where your stand among the population.", 
+			"Fetches polls and their results from the database.", 
+			"Uses useMemo and useRef."]
+	},
+	{
+		"route": "/imageMetaData",
+		"name": "Check Image Meta Data",
+		"description": ["Upload an image to check any meta data attached to it.",
+			"Can upload multiple images at once.", 
+			"Can remove images."]
+	},
+	{
+		"route": "/likeMyPhoto",
+		"name": "Image Gallery",
+		"description": ["Upload images to a gallery", 
+			"Like images", 
+			"Uses react-icons."]
+	},
+	{
+		"route": "/temperatureShowcase",
+		"name": "Temperature Comparer",
+		"description": ["Set a temperature and see which is the closest city with the same temperature.",
+			"Uses weatherapi.com for temperature data."]
+	},
+	{
+		"route": "/sliderPuzzle",
+		"name": "The Slider Puzzle",
+		"description": ["Move the sliders until all sliders are exactly at their center point.",
+			"Uses slider webkit."]
+	},
+	{
+		"route": "/searchBar",
+		"name": "Implementation of a Search Bar",
+		"description": ["Open the search bar my typing or pressing the icon.", 
+			"Press enter to enter the text or click outside to exit.", 
+			"Uses useContext."]
+	},
+	{
+		"route": "/popups",
+		"name": "The Pop Up Game",
+		"description": ["Click on the largest numbered balloon on the screen to pop it.", 
+			"Pop all the balloons to win.", 
+			"Popping the wrong balloon incurs a penalty."]
+	},
+	{
+		"route": "/progressBars",
+		"name": "Simple Progress Bars",
+		"description": ["Linking inputs to Progress Bars.", 
+			"Simple implementation, nothing fancy.", 
+			"Uses Math.Random and useEffect"]
+	},
+	{
+		"route": "/subscribe",
+		"name": "Subscribe and Unsubscribe",
+		"description": ["Popping up a notification for the user to sign in with their email", "Option to unsubscribe"]
+	},
+	{
+		"route": "/movies",
+		"name": "Create Your Own Database",
+		"description": ["Store your favorite books, movies, and seasons and all their details in an online database.", 
+			"Search through your database for any entered details.", 
+			"Authenticate into your own database."]
+	},
+	{
+		"route": "/otherSkills",
+		"name": "What other skills I know",
+		"description": ["Click here for an overview of what other things I have done for this portfolio"]
+	}
+	];
 	return (
 		<div className={`ParentDiv ${theme}`}>
-	  <h1 className={`HomeTitle ${theme}`}>Welcome to the Home Page</h1>
+	  <h1 className={`HomeTitle ${theme}`}>Welcome to the niceBhaalo&apos;s Web Development Portfolio</h1>
+	  <h2 className={`HomeTitle ${theme}`}>Below are some of my little mini apps to show what I have learnt so far</h2>
       <nav>
         <div className="LinksContainer">
-            <Link className={`Links ${theme}`} to="/esignature">Esignature</Link>
-            <Link className={`Links ${theme}`}  to="/birthdays">Birthdays</Link>
-            <Link className={`Links ${theme}`}  to="/randomizeColors">Colors</Link>
-			<Link className={`Links ${theme}`}  to="/polling">Polls</Link>
-			<Link className={`Links ${theme}`}  to="/imageMetaData">Check Image Meta Data</Link>
-			<Link className={`Links ${theme}`}  to="/likeMyPhoto">Like My Photo</Link>
-			<Link className={`Links ${theme}`}  to="/temperatureShowcase">Compare Temperature</Link>
-			<Link className={`Links ${theme}`} to="/sliderPuzzle">Slider Puzzle</Link>
-			<Link className={`Links ${theme}`} to="/searchBar">Search Bar</Link>
-			<Link className={`Links ${theme}`} to="/popups">Popups</Link>
-			<Link className={`Links ${theme}`} to="/progressBars">Progress Bars</Link>
-			<Link className={`Links ${theme}`} to="/subscribe">Subscribe Implementation</Link>
-			<Link className={`Links ${theme}`} to="/movies">Movies Database</Link>
-
+			{
+				allLinks.map(item => (
+					<div key={item.route} className={`LinkContainer ${theme}`}>
+						<div className="LinkButtonContainer">
+							<Link className={`Links ${theme}`} to={item.route}>{item.name}</Link>
+						</div>
+						<div className={`InstructionsContainer ${theme}`}>
+							{
+								item.description.map(instruction => (
+									<div key={instruction} className={`Instruction ${theme}`}>
+									{instruction}
+									</div>
+								))
+							}
+						</div>
+					</div>
+				))
+			}
         </div>
       </nav>
     </div>

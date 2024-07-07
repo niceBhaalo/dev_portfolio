@@ -19,9 +19,9 @@
 }
 .TemperatureCard {
 	background-color: #e3e2e1;
-	width: min(500px, 95vw);
+	width: min(95vw, 500px);
 	border-radius: 10px;
-	height: min(700px, 95vh);
+	height: 85vh;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -29,6 +29,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 2vh;
 }
 .TemperatureCard.light {
 	background-color: #e3e2e1;
@@ -40,33 +41,30 @@
 }
 
 .TemperatureDisplay {
-    width: 60%;
-    height: 0;
-    padding-top: 60%;
+	width: 35vh;
+    height: 35vh;
     background-color: #ad283a; 
-    position: relative; 
-    margin: 40px;
     box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 50%; /* Make it a circle */
-
+	font-size: 60px;
+	color: white;
+	white-space: nowrap;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .TemperatureText {
   position: absolute;
   top: 50%;
   left: 50%;
-  font-size: 60px;
-  color: white;
   transform: translate(-50%, -50%);
-  white-space: nowrap;
+  text-align: center;
 }
 .TemperatureButton {
-  display: flex;
-justify-content: center;
+	display: flex;
+	justify-content: center;
     align-items: center;
-
 	width: 40%;
 	background-color: #3d0d14;
 	color: white;
@@ -90,30 +88,34 @@ justify-content: center;
 }
 .TemperatureButtons {
 	width: 60%;
+	height: 20vh;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-
+	align-items: center;
 }
 .TemperatureLocationName {
-	font-size: 32px;
-	margin: 5px;
+	font-size: 4vh;
+}
+.TemperatureLocationName:last-child {
+	margin-bottom: 2vh
 }
 .TemperatureComparisonText {
-	font-size: 24px;
-	margin: 5px;
-
+	font-size: 3vh;
+	margin: 2vh 0 2vh 0;
+	text-align: center;
+	white-space: nowrap;
 }
 .TemperatureComparisonDiv {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	flex-grow: 1;
+	justify-content: space-around;
 	width: 85%;
+	height: 25vh;
 	border-radius: 5px;
 	background-color: #b5cef5;
-	margin: 20px;
+	box-sizing: border-box;
 }
 .TemperatureComparisonDiv.light {
 	background-color: #b5cef5;

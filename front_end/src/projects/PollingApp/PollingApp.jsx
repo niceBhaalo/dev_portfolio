@@ -51,21 +51,21 @@ export default function PollingApp() {
   return (
     <div className={`PollingParentDiv ${theme}`}>
 		<div className={"PollingWindow"}>
-        <div className="container justify-center">
-          {[0, 1, 2].map((index) => (
-            <div
-              key={index}
-              className="container file-tab justify-center align-c fs-3"
-              style={{ backgroundColor: tabColors[index] }}
-              onClick={() => handleTabClick(index)}
-            >
-              {index === 0 ? 'Open' : index === 1 ? 'Answered' : 'Upcoming'}
-            </div>
-          ))}
-        </div>
-        <div className="poll-list-window" style={{ backgroundColor: tabColors[selectedTab] }}>
-			<PollsDataWindow key={1} data={data} pollType={selectedTab === 0 ? 'Open' : 'Answered'} />
-        </div>
+			<div className="PollingTabsContainer">
+			  {[0, 1, 2].map((index) => (
+				<div
+				  key={index}
+				  className="container file-tab justify-center align-c fs-3"
+				  style={{ backgroundColor: tabColors[index] }}
+				  onClick={() => handleTabClick(index)}
+				>
+				  {index === 0 ? 'Open' : index === 1 ? 'Answered' : 'Upcoming'}
+				</div>
+			  ))}
+			</div>
+			<div className="poll-list-window" style={{ backgroundColor: tabColors[selectedTab] }}>
+				<PollsDataWindow key={1} data={data} pollType={selectedTab === 0 ? 'Open' : 'Answered'} />
+			</div>
         </div>
     </div>
   );

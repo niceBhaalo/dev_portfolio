@@ -92,7 +92,7 @@ export default function TemperatureShowcaseApp () {
 			<button className={`TemperatureToggleButton ${theme}`} onClick={handleToggle}>&deg;{unitType === 'C' ? 'F' : 'C'}</button>
 			
 			<div className="TemperatureDisplay">
-				<div className="TemperatureText">{temperature} &deg;{unitType}</div>
+				{temperature} &deg;{unitType}				
 			</div>
 			
 			<div className="TemperatureButtons">

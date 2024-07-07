@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+.App {
 
+	min-width: 370px;
+
+}
 .HomeButtons {
 	display: flex;
 	flex-direction: column;
@@ -81,14 +85,13 @@
 
 .LinksContainer {
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	flex-direction: column;
 	width: 90vw;
 }
 
 .Links {
-	height: 100px;
-	width: 200px;
+	height: 20vh;
+	width: 20vw;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -97,16 +100,17 @@
 	border-radius: 5px;
 	text-decoration: none;
 	margin: 10px;
+	font-size: 2vh;
 }
 .Links.light {
 	border-color: black;
-	color: white;
-	background-color: grey;
+	color: black;
+	background-color: #0CFF79;
 }
 .Links.dark {
 	border-color: white;
 	color: black;
-	background-color: grey;
+	background-color: #A08806;
 }
 
 .containerSig {
@@ -264,5 +268,65 @@
 .fs-3 {
 	font-size: max(1.5rem, 2vh);
 }
-
-
+.LinkContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	border-radius: 5px;
+	border: 2px solid;
+	margin: 10px;
+	align-items: center;
+	align-content: space-between;
+}
+.LinkContainer.light {
+	background-color: #9FD0D0;
+	border-color: black;
+}
+.LinkContainer.dark {
+	background-color: #29175B;
+	border-color: white;
+}
+.InstructionsContainer {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+}
+.InstructionsContainer.light {
+	color: black;
+}
+.InstructionsContainer.dark {
+	color: white;
+}
+.Instruction {
+	padding: 8px;
+}
+.Instruction.light {
+	color: black;
+}
+.Instruction.dark {
+	color: white;
+}
+.LinkButtonContainer {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	height: auto;
+}
+@media (max-width: 768px) {
+	.Links {
+		height: 15vh;
+		width: 50vw;
+	}
+	.LinkButtonContainer {
+		width: 100%;
+	}
+	.InstructionsContainer {
+		align-items: center;
+	}
+	.LinkContainer {
+		justify-content: center;
+	}
+	.Instruction {
+		text-align: center;
+	}
+}

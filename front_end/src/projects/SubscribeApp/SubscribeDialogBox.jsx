@@ -148,7 +148,7 @@ export default function SubscribeDialogBox({showDialogBox, onClick, settingSubbe
 			style={dialogBoxStyle}
 		>
 			<div 
-				className="crossButton"
+				className="subscribeCrossButton"
 				onClick={onClose}
 			>
 				<IoExitOutline />

@@ -254,50 +254,57 @@ const upload = multer();
 
 router.post('/new-entry', upload.single('picture'), async (req, res) => {
     try {
-		console.log(req.body);
         const { formData, databaseID, uniqueKey } = req.body;
         const parsedFormData = JSON.parse(formData);
-        console.log("FORM DATA: ", formData);
-        console.log("Parsed Form Data: ", parsedFormData);
-
+		console.log("Request Received");
         if (req.file) {
+			console.log("File Found");
             const readStream = new Readable();
             readStream.push(req.file.buffer);
             readStream.push(null);
 
             const uploadStream = bucket.openUploadStream(req.file.originalname);
 
-            readStream.pipe(uploadStream)
-                .on('error', (error) => {
-                    console.error('Error uploading file:', error);
-                    res.status(500).send('Error uploading file');
-                })
-                .on('finish', async (file) => {
-                    console.log('File upload successful');
-                    const fileID = file._id;
-                    parsedFormData.picture = fileID.toString();
-                    console.log(parsedFormData.picture);
+            uploadStream.on('error', (error) => {
+                console.error('Error uploading file:', error);
+                console.log("Error found");
+                res.status(500).send('Error uploading file');
+            });
 
-                    if (uniqueKey && uniqueKey !== 'undefined') {
-                        const result = await db.collection('Databases').updateOne(
-                            { UniqueKey: uniqueKey, DatabaseID: databaseID },
-                            { $set: { JSONObject: parsedFormData } }
-                        );
-                        if (result.matchedCount > 0) {
-                            res.status(200).send(parsedFormData);
-                        } else {
-                            res.status(404).send('Entry not found.');
-                        }
+            uploadStream.on('finish', async () => {
+                const file = await bucket.find({ filename: req.file.originalname }).sort({ uploadDate: -1 }).limit(1).toArray();
+				console.log(file);
+                if (!file) {
+					console.log("File Not Found");
+                    res.status(500).send('File upload failed');
+                    return;
+                }
+                console.log('File upload successful');
+                const fileID = file[0]._id;
+                parsedFormData.picture = fileID;
+
+                if (uniqueKey && uniqueKey !== 'undefined') {
+                    const result = await db.collection('Databases').updateOne(
+                        { UniqueKey: uniqueKey, DatabaseID: databaseID },
+                        { $set: { JSONObject: parsedFormData } }
+                    );
+                    if (result.matchedCount > 0) {
+                        res.status(200).send(parsedFormData);
                     } else {
-                        const newUniqueKey = uuidv4();
-                        await db.collection('Databases').insertOne({
-                            UniqueKey: newUniqueKey,
-                            DatabaseID: databaseID,
-                            JSONObject: parsedFormData
-                        });
-                        res.status(201).send(parsedFormData);
+                        res.status(404).send('Entry not found.');
                     }
-                });
+                } else {
+                    const newUniqueKey = uuidv4();
+                    await db.collection('Databases').insertOne({
+                        UniqueKey: newUniqueKey,
+                        DatabaseID: databaseID,
+                        JSONObject: parsedFormData
+                    });
+                    res.status(201).send(parsedFormData);
+                }
+            });
+
+            readStream.pipe(uploadStream);
         } else {
             if (uniqueKey && uniqueKey !== 'undefined') {
                 const result = await db.collection('Databases').updateOne(

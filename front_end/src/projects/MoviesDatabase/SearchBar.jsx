@@ -40,8 +40,9 @@ export default function SearchBar({ onSearchChange, onFilterChange }) {
 
     const renderCheckboxes = () => {
         return Object.keys(cardFilters).map((key) => (
-            <label key={key} style={{ marginRight: '15px' }}>
+            <label key={key} className="dbCheckBoxesLabel"style={{ marginRight: '15px' }}>
                 <input
+					className="dbCheckBoxes"
                     type="checkbox"
                     checked={cardFilters[key] === 'Yes'}
                     onChange={() => handleCheckboxChange(key)}
@@ -52,14 +53,15 @@ export default function SearchBar({ onSearchChange, onFilterChange }) {
     };
 
     return (
-        <div>
+        <div className="dbUITop">
             <input
+				className="dbSearchBar"
                 type="text"
                 onChange={(e) => onSearchChange(e.target.value)}
                 placeholder="Search in Database"
                 style={{ display: 'block', marginBottom: '15px' }}
             />
-            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            <div className="dbCheckBoxesContainer">
                 {renderCheckboxes()}
             </div>
         </div>

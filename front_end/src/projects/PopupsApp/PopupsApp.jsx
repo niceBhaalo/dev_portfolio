@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { ThemeContext } from "../../contexts/ThemeContext.jsx";
-
+import './PopupsApp.css';
 
 export default function PopupsApp () {
 
@@ -61,16 +61,12 @@ export default function PopupsApp () {
 		top: '50vh',
 		left: '50vw',
 		transform: `translate(-50%, -50%)`,
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
 	}
 	const [popUps, setPopUps] = useState([]);
 	const [currentInt, setCurrentInt] = useState(5);
 	const [initialPopUpsGenerated, setInitialPopUpsGenerated] = useState(false);
 
 	const handlePop = (index) => {
-
 		if (popUps[index.index].text === currentInt) {
 			setPopUps((prevPopUps) => {
 				const updatedPopUps = prevPopUps.filter((_, i) => i !== index.index);
@@ -85,7 +81,6 @@ export default function PopupsApp () {
 			createNewPopUp();
 		}
 	};
-  
   
 	const generateInitialPopUps = () => {
 		let startingPoint = 3;
@@ -114,6 +109,11 @@ export default function PopupsApp () {
 		}
 	}, [createPops, currentInt, initialPopUpsGenerated]);
 	
+	const handleRestart = () => {
+		setInitialPopUpsGenerated(false);
+		console.log("Restart Called");
+		setCreatePops(true);
+	};
 return (
 	<div style={containerStyle}>
 		<div style={instructionText}>
@@ -129,8 +129,13 @@ return (
 			</div>
 			)))}
 		{createPops === false && (
-			<div style={victoryStyle}>
-			Congratulations!!!
+			<div className="popUpsVictory" style={victoryStyle}>
+				<div>Congratulations!!!</div>
+				<button
+					className="popUpsRestartButton"
+					onClick={handleRestart}>
+					Click to Restart
+				</button>
 			</div>
 			)}
 	</div>

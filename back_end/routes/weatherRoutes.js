@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const router = express.Router();
-const weatherAPIKey = 'e7ec08bf12924914915102826241005'
+const weatherAPIKey = '03990d59aff54e4faaf210058240507'
 // Object to store cached data
 let cachedData = {};
 

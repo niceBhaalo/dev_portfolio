@@ -36,7 +36,7 @@ export default function SearchBarApp() {
 	};
 	let inputStyle = {
 		color: theme === 'light' ? 'black' : 'white',
-		width: "min(500px, 90vw)",
+		width: "min(60%, 700px)",
 		height: "30px",
 		position: "relative",
 		left: "50%",
@@ -53,14 +53,19 @@ export default function SearchBarApp() {
 		zIndex: 10,
 		borderRadius: "min(250px, 45vw)",
 	};
-	const showSearch = () => {
+	
+	const showSearch = (key) => {
 		setUiProps(prevProps => ({
 			...prevProps,
 			showSearchBar: true,
 			showSearchIcon: false,
 		}));
-		setInputValue("");
-
+		console.log(key);
+		if (key) {
+			setInputValue(key);
+		} else {
+			setInputValue("");
+		}
 	};
 	const handleBlur = () => {
 		setUiProps(prevProps => ({
@@ -92,7 +97,7 @@ export default function SearchBarApp() {
 		if (uiProps.showSearchIcon && /^[a-zA-Z0-9]$/i.test(event.key)) {
 			event.preventDefault(); // Prevent the default behavior of the key press event
 
-			showSearch();
+			showSearch(event.key);
 		}
 	};
 	const handleInputChange = (event) => {
@@ -128,7 +133,7 @@ export default function SearchBarApp() {
 			<style>{placeholderStyle}</style>
 
 			{uiProps.showSearchIcon ? (
-				<IoSearch style={searchIconStyle} onClick={showSearch} />
+				<IoSearch style={searchIconStyle} onClick={()=> showSearch("")} />
 			) : (
 				<input
 					type="text"

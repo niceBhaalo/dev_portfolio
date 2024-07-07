@@ -64,9 +64,11 @@ export default function MoviesDatabase() {
 			className="showInputCardButton"
 			style={newEntryButtonStyle}
 			onClick={handleNewEntry}
-		>
-			New Entry
-			</div>}
+			>
+				New Entry
+			</div>
+		}
+		
 		{activeDatabase !== "" && <>
 			<SearchBar 
 			

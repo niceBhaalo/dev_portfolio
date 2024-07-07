@@ -1,0 +1,16 @@
+.popUpsVictory {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	padding: 10px;
+	box-sizing: border-box;
+}
+.popUpsRestartButton {
+	width: 50%;
+	height: 20%;
+	border: 2px solid black;
+	color: black;
+	background-color: #edcac7;
+	border-radius: 5px;
+}

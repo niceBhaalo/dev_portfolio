@@ -5,6 +5,7 @@
 	max-width: 100%;
 	top: 0;
 	left: 0;
+
 }
 .LogInParent {
 	position: absolute;
@@ -255,6 +256,7 @@
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  width: min(500px, 95vw);
 }
 
 .CardTitle {
@@ -300,5 +302,47 @@
 	border-radius: 5px;
 
 }
+.dbSearchBar {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
 
-/* Add more styles as needed */
+.dbSearchBar:focus {
+    border-color: #4CAF50; /* Highlight color on focus */
+}
+
+.dbUITop {
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.dbCheckBoxesLabel {
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.dbCheckBoxes {
+    margin-right: 5px;
+    accent-color: #4CAF50; /* Customize checkbox color */
+}
+
+.dbCheckBoxesContainer {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px;
+	border: 2px solid black;
+	border-radius: 5px;
+	box-sizing: border-box;
+	width: 80%;
+}

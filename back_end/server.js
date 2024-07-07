@@ -10,6 +10,7 @@ console.log("PORT: ", process.env.PORT);
 const app = express();
 app.use(express.json());
 
+
 const corsOptions = {
     origin: ['172.21.0.0'],
 };
