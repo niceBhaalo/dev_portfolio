@@ -16,6 +16,7 @@ import PopupsApp from './projects/PopupsApp/PopupsApp.jsx';
 import ProgressBarsApp from './projects/ProgressBarsApp/ProgressBarsApp.jsx';
 import SubscribeApp from './projects/SubscribeApp/SubscribeApp.jsx';
 import MoviesDatabase from './projects/MoviesDatabase/MoviesDatabase.jsx';
+import OtherSkills from './projects/OtherSkills/OtherSkills.jsx';
 
 import {ThemeContext, themes } from './contexts/ThemeContext.jsx';
 //Changed
@@ -49,6 +50,7 @@ function App() {
 			<Route path="/progressBars" element={<ProgressBarsApp />} />
 			<Route path="/subscribe" element={<SubscribeApp />} />
 			<Route path="/movies" element={<MoviesDatabase />} />
+			<Route path="/other" element={<OtherSkills />} />
 
 			</Routes>
 			<div className="HomeButtons">
@@ -146,9 +148,9 @@ function Home() {
 			"Authenticate into your own database."]
 	},
 	{
-		"route": "/otherSkills",
+		"route": "/other",
 		"name": "What other skills I know",
-		"description": ["Click here for an overview of what other things I have done for this portfolio"]
+		"description": ["Click here for an overview of what other things I know how to do"]
 	}
 	];
 	return (

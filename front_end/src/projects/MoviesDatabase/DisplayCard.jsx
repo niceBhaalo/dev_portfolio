@@ -145,61 +145,68 @@ export default function DisplayCard({ data, filter, callEdit, callDelete, duplic
 		}, [filter]);
 		
   return (
-  <>
-    {displayCard===true && (<div className="CardContainer">
-      <div className="CardTitle">
-        {displayData.title}&nbsp;({displayData.year})
-        {iconMapping[displayData.icon]}
-      </div>
-      {filter.Picture === 'Yes' && imageURL && (
-        <div className="CardPicture">
-          <img id="image" src={imageURL} alt="Uploaded" />
-        </div>
-      )}
-		<div className="CardData">
-		{filter.Creators === 'Yes' && displayData.creator && (<span>{displayData.creatorDesignation}:&nbsp;{displayData.creator}</span>)}
-		{filter.Rating === 'Yes' && displayData.rating && (<span>Rating: {displayData.rating}</span>)}
-		{filter.Universe === 'Yes' && displayData.universe === "Yes"  && (<span>Universe:&nbsp;{displayData.universeName}</span>)}
+	<>
+		{displayCard===true && (<div className="CardContainer">
+			<div className="CardTitle">
+				{displayData.title}&nbsp;({displayData.year})
+				{iconMapping[displayData.icon]}
+			</div>
+			{filter.Picture === 'Yes' && imageURL && (
+				<div className="CardPicture">
+					<img id="image" src={imageURL} alt="Uploaded" />
+				</div>
+			)}
+			{filter.Data === 'Yes' && 
+				<div className="CardData">
+					{filter.Creators === 'Yes' && displayData.creator && (<span>{displayData.creatorDesignation}:&nbsp;{displayData.creator}</span>)}
+					{filter.Rating === 'Yes' && displayData.rating && (<span>Rating: {displayData.rating}</span>)}
+					{filter.Universe === 'Yes' && displayData.universe === "Yes"  && (<span>Universe:&nbsp;{displayData.universeName}</span>)}
 
-		{filter.Prequels === 'Yes' && displayData.prequels === "Yes" && (<span>Prequels: {displayData.prequelsName}</span>)}
-		{filter.Sequels === 'Yes' && displayData.sequels === "Yes"  && (<span>Sequels: {displayData.sequelsName}</span>)}
-		{filter.SpinOffs === 'Yes' && displayData.spinoffs === "Yes" && (
-		  <div>
-			<span>Spin-Offs:&nbsp;</span>
-			{displayData.spinoffsName.map((name, index) => (
-			  (name !== "" && <span key={index}>{name},&nbsp;</span>)
-			))}
-		  </div>
-		)}
-		{filter.Specials === 'Yes' && displayData.specials === "Yes" && (
-		  <div>
-			<span>Specials:&nbsp;</span>
-			{displayData.specialsName.map((name, index) => (
-			  (name !== "" && <span key={index}>{name},&nbsp;</span>)
-			))}
-		  </div>
-		)}
-		{filter.Cast === 'Yes' && displayData.cast === "Yes" && (
-		  <div>
-			<span>Cast:&nbsp;</span>
-			{displayData.castName.map((name, index) => (
-			  (name !== "" && <span key={index}>{name},&nbsp;</span>)
-			))}
-		  </div>
-		)}
-		{filter.Tags === 'Yes' && displayData.tags && displayData.tags.length > 0 && (
-		  <div>
-			<span>Tags:&nbsp;</span>
-			{displayData.tags.map((tag, index) => (
-			  (tag !== "" && <span key={index}>{tag},&nbsp;</span>)
-			))}
-		  </div>
-		)}
-		</div>
-      <button className="DeleteButton" onClick={callEdit}>Edit</button>
-      <button className="DeleteButton" onClick={callDelete}>Delete</button>
-      <button className="DeleteButton" onClick={duplicateCard}>Duplicate</button>
-    </div>)}
-    </>
+					{filter.Prequels === 'Yes' && displayData.prequels === "Yes" && (<span>Prequels: {displayData.prequelsName}</span>)}
+					{filter.Sequels === 'Yes' && displayData.sequels === "Yes"  && (<span>Sequels: {displayData.sequelsName}</span>)}
+					{filter.SpinOffs === 'Yes' && displayData.spinoffs === "Yes" && (
+						<div>
+							<span>Spin-Offs:&nbsp;</span>
+							{displayData.spinoffsName.map((name, index) => (
+							(name !== "" && <span key={index}>{name},&nbsp;</span>)
+							))}
+						</div>
+					)}
+					{filter.Specials === 'Yes' && displayData.specials === "Yes" && (
+						<div>
+							<span>Specials:&nbsp;</span>
+							{displayData.specialsName.map((name, index) => (
+							(name !== "" && <span key={index}>{name},&nbsp;</span>)
+							))}
+						</div>
+					)}
+					{filter.Cast === 'Yes' && displayData.cast === "Yes" && (
+						<div>
+							<span>Cast:&nbsp;</span>
+							{displayData.castName.map((name, index) => (
+							(name !== "" && <span key={index}>{name},&nbsp;</span>)
+							))}
+						</div>
+					)}
+					{filter.Tags === 'Yes' && displayData.tags && displayData.tags.length > 0 && (
+						<div>
+							<span>Tags:&nbsp;</span>
+							{displayData.tags.map((tag, index) => (
+							(tag !== "" && <span key={index}>{tag},&nbsp;</span>)
+							))}
+						</div>
+					)}
+				</div>
+			}
+			{filter.Buttons === 'Yes' && 
+				<div className="dbCardButtonContainer">
+					<button className="dbCardButton" onClick={callEdit}>Edit</button>
+					<button className="dbCardButton" onClick={callDelete}>Delete</button>
+					<button className="dbCardButton" onClick={duplicateCard}>Duplicate</button>
+				</div>
+			}
+			</div>)
+		}
+	</>
   );
 }

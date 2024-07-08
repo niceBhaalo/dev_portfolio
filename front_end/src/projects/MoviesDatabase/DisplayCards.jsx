@@ -3,6 +3,7 @@ import {ThemeContext} from '../../contexts/ThemeContext.jsx';
 import axios from 'axios';
 import DisplayCard from './DisplayCard.jsx';
 import InputCard from './InputCard.jsx';
+import MasonryGrid from './MasonryGrid.jsx';
 
 export default function DisplayCards ({ currentUser, refreshKey, refreshDB, searchString, cardFilters}) {
 
@@ -144,36 +145,38 @@ export default function DisplayCards ({ currentUser, refreshKey, refreshDB, sear
 		}
 		
 	};
+
 	return (
-		<div className="DisplayCardsContainer">
-			{displayData.map((item,index)=>(
-				<DisplayCard 
-				key={item.uniqueKey} 
-				data={item} 
-				filter={cardFilters} 
-				callEdit={()=>setEditCard(item, index)} 
-				callDelete={()=>deleteCardDialogBox(item,index)}
-				duplicateCard={()=>duplicateCard(item, index)}/>
-			))}
-			{showEditCard && 
-				<InputCard 
-					onSubmit={(newData)=>updateDisplayData(newData)}
-					onCancel={()=>setShowEditCard(false)}
-					currentUser={currentUser}
-					editData={editData}
-					uniqueKey={uniqueKey}
-				/>
-			}
-			{showDeleteDialogBox && <div className="DeleteDialogBox">
-				<div>
-					Are You Sure You Want to Delete This Card?
-				</div>
-				<div >
-					<button onClick={deleteCard}>Yes</button>
-					<button onClick={()=>setShowDeleteDialogBox(false)}>No</button>
-				</div>
-			</div>}			
-		</div>
-	
+		<MasonryGrid filter={cardFilters}>
+			<div className="DisplayCardsContainer">
+				{displayData.map((item,index)=>(
+					<DisplayCard 
+					key={item.uniqueKey} 
+					data={item} 
+					filter={cardFilters} 
+					callEdit={()=>setEditCard(item, index)} 
+					callDelete={()=>deleteCardDialogBox(item,index)}
+					duplicateCard={()=>duplicateCard(item, index)}/>
+				))}
+				{showEditCard && 
+					<InputCard 
+						onSubmit={(newData)=>updateDisplayData(newData)}
+						onCancel={()=>setShowEditCard(false)}
+						currentUser={currentUser}
+						editData={editData}
+						uniqueKey={uniqueKey}
+					/>
+				}
+				{showDeleteDialogBox && <div className="DeleteDialogBox">
+					<div>
+						Are You Sure You Want to Delete This Card?
+					</div>
+					<div className="dbDeleteButtonContainer">
+						<button className="dbDeleteButton" onClick={deleteCard}>Yes</button>
+						<button className="dbDeleteButton" onClick={()=>setShowDeleteDialogBox(false)}>No</button>
+					</div>
+				</div>}			
+			</div>
+		</MasonryGrid>
 	);
 }

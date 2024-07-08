@@ -5,8 +5,9 @@ import './PopupsApp.css';
 export default function PopupsApp () {
 
 	function createNewPopUp() {
-		const xValue = Math.floor(Math.random() * (90 - 10 + 1)) + 10;
-		const yValue = Math.floor(Math.random() * (90 - 10 + 1)) + 10;
+		const gap = 50 / viewportWidth * 100;
+		const xValue = Math.floor(Math.random() * (100-gap-gap/2-gap/2) + gap/2);
+		const yValue = Math.floor(Math.random() * (85-gap) + gap);
 		setPopUps((prevPopUps) => [
 			...prevPopUps,
 			{ 'text': currentInt + 1, 'xValue': xValue, 'yValue': yValue }
@@ -15,6 +16,7 @@ export default function PopupsApp () {
 	}
 	const theme = useContext(ThemeContext);
 	const [createPops, setCreatePops] = useState(true);
+	const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
 	const light = "#FFFACD";
 	const dark = "#483D8B";
 	let containerStyle = {
@@ -63,7 +65,7 @@ export default function PopupsApp () {
 		transform: `translate(-50%, -50%)`,
 	}
 	const [popUps, setPopUps] = useState([]);
-	const [currentInt, setCurrentInt] = useState(5);
+	const [currentInt, setCurrentInt] = useState(0);
 	const [initialPopUpsGenerated, setInitialPopUpsGenerated] = useState(false);
 
 	const handlePop = (index) => {
@@ -83,16 +85,18 @@ export default function PopupsApp () {
 	};
   
 	const generateInitialPopUps = () => {
-		let startingPoint = 3;
+		let startingPoint = 5;
 		const initialPopUps = [];
+		const gap = 50 / viewportWidth * 100;
+			
 		for (let i = 1; i <= startingPoint; i++) {
-			const xValue = Math.floor(Math.random() * (90 - 10 + 1)) + 10;
-			const yValue = Math.floor(Math.random() * (90 - 10 + 1)) + 10;
+			const xValue = Math.floor(Math.random() * (100-gap-gap/2-gap/2) + gap/2);
+			const yValue = Math.floor(Math.random() * (85-gap) + gap);
 			initialPopUps.push({ 'text': i, 'xValue': xValue, 'yValue': yValue });
 		}
 		setPopUps(initialPopUps);
-		setCurrentInt(startingPoint); // Set currentInt to 5 after generating the initial pop-ups
-		setInitialPopUpsGenerated(true); // Mark that initial pop-ups are generated
+		setCurrentInt(startingPoint);
+		setInitialPopUpsGenerated(true); 
 	};
 	
 	useEffect(() => {

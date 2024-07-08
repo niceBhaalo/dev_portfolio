@@ -7,9 +7,7 @@ export default function SearchBar({ onSearchChange, onFilterChange }) {
   // const light = '#9beafa';
   // const dark = '#11292e';
   // const lightText = "#c9f6ff";
-  console.log(theme);
-  
-  
+    
     const [cardFilters, setCardFilters] = useState({
         Series: 'Yes',
         Book: 'Yes',
@@ -26,6 +24,7 @@ export default function SearchBar({ onSearchChange, onFilterChange }) {
         Universe: 'Yes',
         Tags: 'Yes',
         Cast: 'Yes',
+        Buttons: 'Yes',
     });
 
     const handleCheckboxChange = (filterKey) => {
@@ -58,8 +57,7 @@ export default function SearchBar({ onSearchChange, onFilterChange }) {
 				className="dbSearchBar"
                 type="text"
                 onChange={(e) => onSearchChange(e.target.value)}
-                placeholder="Search in Database"
-                style={{ display: 'block', marginBottom: '15px' }}
+                placeholder="Search in Database (Feature Under Construction)"
             />
             <div className="dbCheckBoxesContainer">
                 {renderCheckboxes()}
