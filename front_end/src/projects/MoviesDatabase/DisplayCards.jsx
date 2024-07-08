@@ -5,7 +5,7 @@ import DisplayCard from './DisplayCard.jsx';
 import InputCard from './InputCard.jsx';
 import MasonryGrid from './MasonryGrid.jsx';
 
-export default function DisplayCards ({ currentUser, refreshKey, refreshDB, searchString, cardFilters}) {
+export default function DisplayCards ({ currentUser, refreshKey, refreshDB, searchString, cardFilters, buttonDisabled, onShowEditCardChange}) {
 
     const theme = useContext(ThemeContext);
     const light = '#9beafa';
@@ -145,9 +145,15 @@ export default function DisplayCards ({ currentUser, refreshKey, refreshDB, sear
 		}
 		
 	};
-
+	useEffect(()=> {
+		onShowEditCardChange(showEditCard);
+	}, [showEditCard]);
+	const [updateGrid, setUpdateGrid] = useState(false);
+	const updateMasonryGrid = () => {
+		setUpdateGrid((prev) => !prev);
+	};
 	return (
-		<MasonryGrid filter={cardFilters}>
+		<MasonryGrid filter={cardFilters} displayData={displayData} updateGrid={updateGrid}>
 			<div className="DisplayCardsContainer">
 				{displayData.map((item,index)=>(
 					<DisplayCard 
@@ -156,7 +162,10 @@ export default function DisplayCards ({ currentUser, refreshKey, refreshDB, sear
 					filter={cardFilters} 
 					callEdit={()=>setEditCard(item, index)} 
 					callDelete={()=>deleteCardDialogBox(item,index)}
-					duplicateCard={()=>duplicateCard(item, index)}/>
+					duplicateCard={()=>duplicateCard(item, index)}
+					buttonDisabled={showEditCard || buttonDisabled}
+					imageFetched={()=>updateMasonryGrid()}
+					/>
 				))}
 				{showEditCard && 
 					<InputCard 

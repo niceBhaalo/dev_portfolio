@@ -5,7 +5,7 @@ import { BiSolidCameraMovie } from "react-icons/bi";
 import { PiTelevision } from "react-icons/pi";
 import axios from 'axios';
 
-export default function DisplayCard({ data, filter, callEdit, callDelete, duplicateCard }) {
+export default function DisplayCard({ data, filter, callEdit, callDelete, duplicateCard, buttonDisabled, imageFetched }) {
   const theme = useContext(ThemeContext);
   const light = '#9beafa';
   const dark = '#11292e';
@@ -50,7 +50,7 @@ export default function DisplayCard({ data, filter, callEdit, callDelete, duplic
 		if (response.status === 200) {
 		  const url = URL.createObjectURL(response.data);
         setImageURL(url); // Set the image URL state
-        console.log(url);
+        imageFetched();
 		}
 	  } catch (error) {
 		console.error('Error fetching image:', error);
@@ -200,9 +200,9 @@ export default function DisplayCard({ data, filter, callEdit, callDelete, duplic
 			}
 			{filter.Buttons === 'Yes' && 
 				<div className="dbCardButtonContainer">
-					<button className="dbCardButton" onClick={callEdit}>Edit</button>
-					<button className="dbCardButton" onClick={callDelete}>Delete</button>
-					<button className="dbCardButton" onClick={duplicateCard}>Duplicate</button>
+					<button className="dbCardButton" onClick={callEdit} disabled={buttonDisabled}>Edit</button>
+					<button className="dbCardButton" onClick={callDelete} disabled={buttonDisabled}>Delete</button>
+					<button className="dbCardButton" onClick={duplicateCard} disabled={buttonDisabled}>Duplicate</button>
 				</div>
 			}
 			</div>)

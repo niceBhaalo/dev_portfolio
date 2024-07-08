@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Masonry from 'masonry-layout';
 
-const MasonryGrid = ({ children, filter }) => {
+const MasonryGrid = ({ children, filter, displayData, updateGrid }) => {
   useEffect(() => {
     const grid = document.querySelector('.DisplayCardsContainer');
     new Masonry(grid, {
@@ -11,7 +11,7 @@ const MasonryGrid = ({ children, filter }) => {
 		transitionDuration: '0.8s',
 		percentPosition: true
     });
-  }, [filter]);
+  }, [filter, displayData, updateGrid]);
 
 
   return <div className="dbGrid">{children}</div>;

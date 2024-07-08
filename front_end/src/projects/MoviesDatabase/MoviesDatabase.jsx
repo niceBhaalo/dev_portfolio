@@ -15,7 +15,7 @@ export default function MoviesDatabase() {
 	const [showClose, setShowClose] = useState(false);
 	const [showInputCards, setShowInputCards] = useState(false);
 	const [refreshKey, setRefreshKey] = useState(0); // This state will trigger the re-render
-
+	const [disableEntryButton, setDisableEntryButton] = useState(false);
 	const [searchString, setSearchString] = useState("");
 	const [cardFilters, setCardFilters] = useState([]);
 	let parentDivStyle = {
@@ -36,12 +36,18 @@ export default function MoviesDatabase() {
 		setShowLogin(false);
 	};
 	const handleNewEntry = () => {
-		setShowInputCards(true);
+		if (!disableEntryButton) {
+			setShowInputCards(true);
+		}
 	};
 	const handleFormSubmit = () => {
 		setShowInputCards(false);
 		setRefreshKey(prevKey => prevKey + 1); // Increment the refresh key to trigger re-render
 	};
+	  const handleShowEditCardChange = (newValue) => {
+	  console.log(newValue);
+		setDisableEntryButton(newValue); // Update showInputCards based on showEditCard value
+	  };
 	return (
 		<div 
 			className="parentDivMain"
@@ -81,6 +87,8 @@ export default function MoviesDatabase() {
 				refreshDB={()=>setRefreshKey(prevKey => prevKey + 1)}
 				cardFilters={cardFilters}
 				searchString={searchString}
+				onShowEditCardChange={handleShowEditCardChange}
+				buttonDisabled={showInputCards}
 			/>
 			</>
 		}
