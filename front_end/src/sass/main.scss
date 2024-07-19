@@ -1,0 +1,363 @@
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/animations";
+@import "base/base";
+@import "base/typography";
+@import "base/utilities";
+
+@import "components/button";
+
+@import "pages/home";
+
+/*
+	COLORS:
+	Light Orange: #f5e4b5
+	Medium Orange: #bfac78
+	Bright Orange: #fac125
+ */
+
+:root {
+	--main-font: #7a148f;
+}
+
+.HomeButtons {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	position: fixed;
+	bottom : 1rem;
+	right: 1rem;
+	z-index: 1000;
+}
+
+.ThemeButton {
+	display: inline-block;
+	background-color: #007bff;
+	color: #fff;
+	border: 0.1rem solid #007bff;
+	padding: 0px 1.5rem;
+	border-radius: .5rem;
+	text-decoration: none;
+	transition: background-color 0.3s ease; 
+	cursor: pointer; 
+	font-family: 'Roboto';
+	height: 4vh;
+	font-size: 2vh;
+}
+
+.ThemeButton:hover {
+  background-color: #0056b3;
+  border-color: #0056b3; 
+}
+
+.back-button {
+	margin-top: 5px;
+	display: inline-block;
+	padding: 5px 15px;
+	background-color: #007bff;
+	color: #fff;
+	border: 1px solid #007bff;
+	border-radius: 5px;
+	text-decoration: none;
+	transition: background-color 0.3s ease; 
+	font-family: 'Roboto'; 
+	height: 4vh;
+	font-size: 2vh;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3; 
+}
+
+.links {
+	display: flex;
+	flex-direction: column;
+	width: 90vw;
+}
+
+.links__project {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	border-radius: 5px;
+	border: 2px solid;
+	margin: 10px;
+	align-items: center;
+	align-content: space-between;
+}
+.links__project.light {
+	background-color: #9FD0D0;
+	border-color: black;
+}
+.links__project.dark {
+	background-color: #29175B;
+	border-color: white;
+}
+.links__instructions {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+}
+.links__instructions.light {
+	color: black;
+}
+.links__instructions.dark {
+	color: white;
+}
+.links__instruction {
+	padding: 8px;
+}
+.links__instruction.light {
+	color: black;
+}
+.links__instruction.dark {
+	color: white;
+}
+.links__button {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	height: auto;
+}
+.links__link {
+	height: 20vh;
+	width: 20vw;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border: 2px solid;
+	border-radius: 5px;
+	text-decoration: none;
+	margin: 10px;
+	font-size: 2vh;
+}
+.links__link.light {
+	border-color: black;
+	color: black;
+	background-color: #0CFF79;
+}
+.links__link.dark {
+	border-color: white;
+	color: black;
+	background-color: #A08806;
+}
+
+.containerSig {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	flex-direction: column;
+}
+
+.hide-nav {
+	display: none;
+}
+.mg-20 {
+	margin: 20px;
+}
+.h-container {
+	display: flex;
+	flex-direction: horizontal;
+		align-items: center;
+	justify-content: center;
+}
+.ind-container {
+	position: absolute;
+}
+.d-flex{
+	display: flex;
+}
+.text-center {
+	text-align: center;
+}
+
+.subtitle{
+	font-size: 2.5rem;
+	font-weight: 400;
+}
+.title {
+	font-size: 3.5rem;
+	font-weight: 100;
+}
+.title-main {
+	font-size: 5rem;
+	font-weight: 600;
+}
+
+.text-primary {
+	color: #7633f9;
+}
+.nav-btn {
+  background-color: #000000; /* Background color */
+  border: none; /* Remove border */
+  border-radius: 50%; /* Make it round */
+  color: #FFFFFF; /* Text color */
+  font-size: 16px; /* Adjust font size */
+  padding: 10px; /* Adjust padding */
+  cursor: pointer; /* Change cursor on hover */
+    margin-top: 10px;
+
+}
+
+.nav-btn:hover {
+  background-color: #42632D; /* Darker background color on hover */
+}
+
+.nav-btn i {
+  /* Adjust the size and style of the arrow icon */
+  font-size: 16px;
+}
+
+/* Additional styles to adjust spacing between the buttons */
+.nav-btn + .nav-btn {
+  margin-left: 10px; /* Add some space between the buttons */
+}
+
+
+/* Default button style */
+.btn-1 {
+  background-color: #4caf50; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Cursor style */
+}
+.btn-2 {
+  background-color: #000000; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Cursor style */
+}
+/* Disabled button style */
+.btn-1:disabled {
+  background-color: #cccccc; /* Grey background */
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	background-color: #f2f2f2;
+	border-radius: 8px;
+	padding: 20px; 
+	border: 1px solid black;
+	margin-bottom: 20px;
+	text-align: left;
+	margin-top: 20px;
+	width: min(600px, 85vw);
+}
+
+.container {
+	display: flex;
+}
+.justify-content {
+	justify-content: space-between;
+}
+.justify-center {
+	justify-content: center;
+}
+.flex-col {
+	flex-direction: column;
+}
+.flex-row {
+	flex-direction: row;
+}
+.align-c {
+	align-items: center;
+}
+.bold {
+	font-weight: bold;
+}
+.italic {
+	font-style: italic;
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease; /* Adjust the duration and timing function as needed */
+}
+.underline {
+	text-decoration: underline;
+}
+.text-box-1 {
+	border: none;
+	border-bottom: 2px dotted;
+	outline: none;
+	margin: 10px 10px;
+}
+.fs-1 {
+	font-size: max(3.5rem, 4vh);
+}
+.fs-2 {
+	font-size: max(2.5rem, 3vh);
+}
+.fs-3 {
+	font-size: max(1.5rem, 2vh);
+}
+@media (max-width: 768px) {
+	.Links {
+		height: 15vh;
+		width: 50vw;
+	}
+	.LinkButtonContainer {
+		width: 100%;
+	}
+	.InstructionsContainer {
+		align-items: center;
+	}
+	.LinkContainer {
+		justify-content: center;
+	}
+	.Instruction {
+		text-align: center;
+	}
+}
+
+@keyframes FadeInLeft {
+0% {
+	opacity: 0;
+	transform: translateX(-100px);
+}
+80% {
+	opacity: 1;
+	transform: translateX(10px);
+}
+100% {
+	transform: translateX(0);
+}
+}
+@keyframes FadeInRight {
+0% {
+	opacity: 0;
+	transform: translateX(100px);
+}
+80% {
+	opacity: 1;
+
+	transform: translateX(-10px);
+}
+100% {
+	transform: translateX(0);
+}
+}
+@keyframes FadeInBottom {
+0% {
+	opacity: 0;
+	transform: translateY(100px);
+}
+100% {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+
+}

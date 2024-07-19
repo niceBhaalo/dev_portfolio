@@ -1,0 +1,59 @@
+.home {
+	min-width: 100%;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+	&.light {
+		background-color: white;
+	}
+	&.dark {
+		background-color: black;
+	}
+}
+
+.header {
+	height: 95vh;
+	background-image: linear-gradient(to bottom, rgba(245, 228, 181, 0.8), rgba(250, 193, 37, 0.83)), url('../../../public/Code_On_Screen_Background.jpg');
+	background-size: cover;
+	background-position: top;
+	width: 100%;
+	clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+	position: relative;
+	border: none;
+	-webkit-backface-visibility: hidden;
+
+	&__content {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
+}
+
+.heading-primary {
+	color: var(--main-font);
+	text-transform: uppercase;
+	text-wrap: nowrap;
+	margin-bottom: 6rem;
+	
+	&--main {
+		display: block;
+		text-align: center;
+		letter-spacing: 2vw;
+		font-weight: 700;
+		animation: FadeInLeft 1s ease-out;
+		text-wrap: nowrap;
+		font-size: 3rem;
+	}
+
+	&--sub {
+		display: block;
+		animation: FadeInRight 1s ease-out;
+		font-size: 2.2rem;
+		letter-spacing: 0.95vw;
+	}
+
+}

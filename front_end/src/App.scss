@@ -1,16 +1,159 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-.App {
+/*
+	COLORS:
+	Light Orange: #f5e4b5
+	Medium Orange: #bfac78
+	Bright Orange: #fac125
+ */
+ 
+:root {
+	--main-font: #7a148f;
+}
 
-	min-width: 370px;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+html {
+	font-size: 62.5%;
+}
+
+*, *::after, *::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+body {
+	font-family: "Lato", sans-serif;
+	font-weight: 400;
+	font-size: 1.6rem;
+	line-height: 1.7;
+	color: #777;
+	padding: 3rem;
+	box-sizing: border-box;
 
 }
+
+.ParentDiv {
+	min-width: 100%;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.ParentDiv.light {
+	background-color: white;
+}
+.ParentDiv.dark {
+	background-color: black;
+}
+
+.HeaderElement {
+	height: 95vh;
+	background-image: linear-gradient(to bottom, rgba(245, 228, 181, 0.8), rgba(250, 193, 37, 0.83)), url(../public/Code_On_Screen_Background.jpg);
+	background-size: cover;
+	background-position: top;
+	width: 100%;
+	clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+	position: relative;
+	border: none;
+	-webkit-backface-visibility: hidden;
+
+}
+.HeaderElement.light {
+	
+}
+
+.HeaderElement.dark {
+
+}
+.HeaderContent {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+.headingPrimary {
+	color: var(--main-font);
+	text-transform: uppercase;
+	text-wrap: nowrap;
+	margin-bottom: 6rem;
+
+}
+.HomeTitle-main {
+	display: block;
+	text-align: center;
+	letter-spacing: 2vw;
+	font-weight: 700;
+	animation: FadeInLeft 1s ease-out;
+	text-wrap: nowrap;
+	font-size: 3rem;
+}
+
+.HomeTitle-sub {
+	display: block;
+	animation: FadeInRight 1s ease-out;
+	font-size: 2.2rem;
+	letter-spacing: 0.95vw;
+}
+
+.btn:link, 
+.btn:visited {
+	display: inline-block;
+	padding: 1rem 6rem;
+	border-radius: 10rem;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: all 0.2s ease-in-out;
+	position: relative;
+}
+
+.btn:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 1rem 2rem rgba(23, 3, 8, 0.8);
+}
+.btn:active {
+	transform: translateY(-2px);
+	box-shadow: 0 .5rem rem rgba(23, 3, 8, 0.8);
+}
+
+.btn-white {
+	background-color: #fff;
+	color: #777;
+}
+
+.btn-anim-1 {
+	animation: FadeInBottom 1s ease-out 0.75s;
+	animation-fill-mode: backwards;
+}
+
+.btn::after {
+	content: "";
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	border-radius: 10rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -1;
+	transition: all 0.5s;
+	opacity: 1;
+}
+.btn:hover::after {
+	transform: scaleX(1.4) scaleY(2);
+	opacity: 0;
+}
+.btn-white::after {
+	background-color: #fff;
+}
+
+
 .HomeButtons {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	position: fixed;
-	bottom : 10px;
-	right: 10px;
+	bottom : 1rem;
+	right: 1rem;
 	z-index: 1000;
 }
 
@@ -18,9 +161,9 @@
 	display: inline-block;
 	background-color: #007bff;
 	color: #fff;
-	border: 1px solid #007bff;
-	padding: 0px 15px;
-	border-radius: 5px;
+	border: 0.1rem solid #007bff;
+	padding: 0px 1.5rem;
+	border-radius: .5rem;
 	text-decoration: none;
 	transition: background-color 0.3s ease; 
 	cursor: pointer; 
@@ -56,32 +199,9 @@
   border-color: #0056b3; 
 }
 
-.ParentDiv {
-	position: absolute;
-	min-width: 100%;
-	top: 0;
-	left: 0;
-	min-height: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-.ParentDiv.light {
-	background-color: white;
-}
-.ParentDiv.dark {
-	background-color: black;
-}
 
-.HomeTitle {
-	text-align: center;
-}
-.HomeTitle.light {
-	color: black;
-}
-.HomeTitle.dark {
-	color: white;
-}
+
+
 
 .LinksContainer {
 	display: flex;
@@ -329,4 +449,44 @@
 	.Instruction {
 		text-align: center;
 	}
+}
+
+@keyframes FadeInLeft {
+0% {
+	opacity: 0;
+	transform: translateX(-100px);
+}
+80% {
+	opacity: 1;
+	transform: translateX(10px);
+}
+100% {
+	transform: translateX(0);
+}
+}
+@keyframes FadeInRight {
+0% {
+	opacity: 0;
+	transform: translateX(100px);
+}
+80% {
+	opacity: 1;
+
+	transform: translateX(-10px);
+}
+100% {
+	transform: translateX(0);
+}
+}
+@keyframes FadeInBottom {
+0% {
+	opacity: 0;
+	transform: translateY(100px);
+}
+100% {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+
 }

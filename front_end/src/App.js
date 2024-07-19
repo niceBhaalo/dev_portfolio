@@ -1,4 +1,4 @@
-import './App.css';
+import './sass/main.scss';
 import EsignatureApp from "./projects/ESignatureApp/EsignatureApp.jsx";
 import BirthsdayApp from "./projects/BirthdaysApp/BirthdaysApp.jsx";
 import RandomizeColorsApp from "./projects/RandomizeColorsApp/RandomizeColorsApp.jsx";
@@ -19,7 +19,7 @@ import MoviesDatabase from './projects/MoviesDatabase/MoviesDatabase.jsx';
 import OtherSkills from './projects/OtherSkills/OtherSkills.jsx';
 
 import {ThemeContext, themes } from './contexts/ThemeContext.jsx';
-//Changed
+
 function App() {
 
 	const [theme, setTheme] = useState(themes.light);
@@ -154,21 +154,28 @@ function Home() {
 	}
 	];
 	return (
-		<div className={`ParentDiv ${theme}`}>
-	  <h1 className={`HomeTitle ${theme}`}>Welcome to the niceBhaalo&apos;s Web Development Portfolio</h1>
-	  <h2 className={`HomeTitle ${theme}`}>Below are some of my little mini apps to show what I have learnt so far</h2>
-      <nav>
-        <div className="LinksContainer">
+		<div className={`home ${theme}`}>
+			<div className={`header ${theme}`}>
+				<div className="header__content">
+					<h1 className="heading-primary">
+						<span className={`heading-primary--main ${theme}`}>Fazeel Ahmed</span>
+						<span className={`heading-primary--sub ${theme}`}>Full-Stack Portfolio</span>
+					</h1>
+					<a href="#" className={"btn btn--white btn--animation-up"}>Get Started</a>
+				</div>
+			</div>
+			<nav>
+			<div className="links">
 			{
 				allLinks.map(item => (
-					<div key={item.route} className={`LinkContainer ${theme}`}>
-						<div className="LinkButtonContainer">
-							<Link className={`Links ${theme}`} to={item.route}>{item.name}</Link>
+					<div key={item.route} className={`links__project ${theme}`}>
+						<div className="links__button">
+							<Link className={`links__link ${theme}`} to={item.route}>{item.name}</Link>
 						</div>
-						<div className={`InstructionsContainer ${theme}`}>
+						<div className={`links__instructions ${theme}`}>
 							{
 								item.description.map(instruction => (
-									<div key={instruction} className={`Instruction ${theme}`}>
+									<div key={instruction} className={`links__instruction ${theme}`}>
 									{instruction}
 									</div>
 								))
