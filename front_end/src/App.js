@@ -17,6 +17,7 @@ import ProgressBarsApp from './projects/ProgressBarsApp/ProgressBarsApp.jsx';
 import SubscribeApp from './projects/SubscribeApp/SubscribeApp.jsx';
 import MoviesDatabase from './projects/MoviesDatabase/MoviesDatabase.jsx';
 import OtherSkills from './projects/OtherSkills/OtherSkills.jsx';
+import ProjectCard from "./projects/Components/ProjectCard.jsx";
 
 import {ThemeContext, themes } from './contexts/ThemeContext.jsx';
 
@@ -66,6 +67,103 @@ function App() {
 function Home() {
 	const theme = useContext(ThemeContext);
 	
+	const allProjects = [
+	{
+		"route": "/esignature",
+		"name": "Date of Births Database",
+		"description": "Store and fetch Name and Date pairs from the database.",
+		"skills": {
+			"React": ["Use State", "Use Context", "Text Input", "Date Input", "Use Axios"], 
+			"NodeJS": ["Use Express", "Use Cors", "Use MongoClient", "Authenticate into a MongoDB", "Recieve Axios Request"],
+			"MongoDB": ["Insert One", "Count Document", "Find One", "Find Query"], "Express": []}
+	},
+	{
+		"route": "/randomizeColors",
+		"name": "Create Color Schemes",
+		"description": "Use randomness to create color schemes of your choosing.",
+		"skills": {
+			"React": ["Use Navigator Clipboard", "Use Effect", "Use FontAwesomeIcons"] 
+		}
+	},
+	{
+		"route": "/polling",
+		"name": "Answer Online Polls",
+		"description": "Participate in Online Polls and see their results.",
+		"skills": {"React": ["Use Memo", "Use Axios", "Use Ref"], 
+			"NodeJS": ["Use MongoClient", "Recieve Axios Requests"], 
+			"MongoDB": ["Use Find One", "Use Update One"], "Express": []}
+	},
+	{
+		"route": "/imageMetaData",
+		"name": "Check Image Meta Data",
+		"description": "A tool to find all available metadata on your images",
+		"skills": {"React": ["Use Exif-JS Library", "Use FileReader" ], "NodeJS": [], "MongoDB": [], "Express": []}
+
+	},
+	{
+		"route": "/likeMyPhoto",
+		"name": "The Image Gallery",
+		"description": "A simple image upload and flexbox demonstration.",
+		"skills": {"React": ["Use State", "Use Flexbox", "Use React-Icons"], "NodeJS": [], "MongoDB": [], "Express": []}
+
+	},
+	{
+		"route": "/temperatureShowcase",
+		"name": "Temperature Comparer",
+		"description": "Fetch Temperature data from a weather api and compare temperatures between locations.",
+		"skills": {"React": ["Use Axios", "Use State", "Use Effect", "Use Set Interval"], "NodeJS": ["Manage Third-Party API Connection", "Cache Request Data"], "MongoDB": [], "Express": []}
+	},
+	{
+		"route": "/sliderPuzzle",
+		"name": "The Slider Puzzle",
+		"description": "Move the Sliders to solve the puzzle",
+		"skills": {"React": ["Use Input Slider", "Use Partial State Update", "Use Effect"], "NodeJS": [], "MongoDB": [], "Express": []}
+			
+	},
+	{
+		"route": "/searchBar",
+		"name": "The Search Bar",
+		"description": "A Simple Search Bar Implementation and Triggers.",
+		"skills": {"React": ["Use Text Input", "Use React Icons", "Use Ref"], "NodeJS": [], "MongoDB": [], "Express": []}
+	},
+	{
+		"route": "/popups",
+		"name": "The Pop Up Game",
+		"description": "Pop The Balloons in their descending order before it gets too overwhelming. Mistakes beware.",
+		"skills": {"React": ["Use Effect", "Use Set Timeout", "Generate Random Positions"], "NodeJS": [], "MongoDB": [], "Express": []}
+
+	},
+	{
+		"route": "/progressBars",
+		"name": "The Simple Progress Bars",
+		"description": "A simple implementation of progress bars and input fields.",
+		"skills": {"React": ["Use State", "Use Effect", "Use Set Timeout", "Use Input Range"], "NodeJS": [], "MongoDB": [], "Express": []}
+
+	},
+	{
+		"route": "/subscribe",
+		"name": "Subscribe and Unsubscribe",
+		"description": "An implementation of a Subscribe and Unsubscribe popup.",
+		"skills": {"React": ["Use StateMachine", "Use Effect", "Validate Form Input"], "NodeJS": [], "MongoDB": [], "Express": []}
+
+	},
+	{
+		"route": "/movies",
+		"name": "Create Your Own Database",
+		"description": "Create your personal database to record movies, books, and seasons.",
+		"skills": {
+			"React": ["Use Input Form", "Authenticate User", "Create User Account", "Use Masonry Layout", "Dynamic Form Inputs", "Use Axios Requests"], 
+			"NodeJS": ["Use Bcrypt for Passwords", "Use Multer", "Use GridFS", "Use UUID", "Use Readable"], 
+			"MongoDB": ["Validate Schema", "Store Photos", "Use Update One", "Use Insert One", "Use Delete One"], 
+			"Express": []}	
+	},
+	{
+		"route": "/other",
+		"name": "What other skills I know",
+		"description": "Click here for an overview of all my skills",
+		"skills": {"React": [], "NodeJS": [], "MongoDB": [], "Express": []}
+	}
+	];
 	const allLinks = [
 	{
 		"route": "/esignature",
@@ -145,7 +243,7 @@ function Home() {
 		"name": "Create Your Own Database",
 		"description": ["Store your favorite books, movies, and seasons and all their details in an online database.", 
 			"Search through your database for any entered details.", 
-			"Authenticate into your own database."]
+			"Authenticate into your own database."],
 	},
 	{
 		"route": "/other",
@@ -164,27 +262,18 @@ function Home() {
 					<a href="#" className={"btn btn--white btn--animation-up"}>Get Started</a>
 				</div>
 			</div>
-			<nav>
-			<div className="links">
-			{
-				allLinks.map(item => (
-					<div key={item.route} className={`links__project ${theme}`}>
-						<div className="links__button">
-							<Link className={`links__link ${theme}`} to={item.route}>{item.name}</Link>
-						</div>
-						<div className={`links__instructions ${theme}`}>
-							{
-								item.description.map(instruction => (
-									<div key={instruction} className={`links__instruction ${theme}`}>
-									{instruction}
-									</div>
-								))
-							}
-						</div>
-					</div>
+			<nav className="width-100">
+			
+			<div className="width-100">
+				{
+					allProjects.map(item => (
+						<ProjectCard 
+							key={item.route} 
+							data={item}
+						/>
 				))
 			}
-        </div>
+			</div>
       </nav>
     </div>
   );

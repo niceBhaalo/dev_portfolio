@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { IoSearch } from "react-icons/io5";
 import { ThemeContext } from "../../contexts/ThemeContext.jsx";
-
+import Title from "../Components/Title.jsx";
 export default function SearchBarApp() {
 	const theme = useContext(ThemeContext);
 	
@@ -130,6 +130,10 @@ export default function SearchBarApp() {
 	`;
 	return (
 		<div style={containerStyle} onKeyDown={handleTilde} tabIndex={0} ref={parentElement}>
+			<Title 
+				classes="Title1"
+				text={uiProps.showSearchIcon ? "Click the Search Icon or Press a Key" : "Click Enter to Submit or Esc to Exit"}
+			/>
 			<style>{placeholderStyle}</style>
 
 			{uiProps.showSearchIcon ? (

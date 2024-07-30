@@ -23,7 +23,7 @@
 	background-color: #c1f5cf80;
 	white-space: nowrap;
 	overflow: hidden; /* Hide overflow text */
-
+	color: black;
 }
 .RCATitle {
 	width: fit-content;

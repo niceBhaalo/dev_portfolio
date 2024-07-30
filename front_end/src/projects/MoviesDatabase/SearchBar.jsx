@@ -4,10 +4,13 @@ import { ThemeContext } from '../../contexts/ThemeContext.jsx';
 export default function SearchBar({ onSearchChange, onFilterChange }) {
 	
 	const theme = useContext(ThemeContext);
-  // const light = '#9beafa';
-  // const dark = '#11292e';
-  // const lightText = "#c9f6ff";
+	const light = '#9beafa';
+	const dark = '#11292e';
+	const lightText = "#c9f6ff";
     
+    let dbSearchBarStyle = {
+		color: theme === 'light' ? dark : light
+    };
     const [cardFilters, setCardFilters] = useState({
         Series: 'Yes',
         Book: 'Yes',
@@ -39,7 +42,8 @@ export default function SearchBar({ onSearchChange, onFilterChange }) {
 
     const renderCheckboxes = () => {
         return Object.keys(cardFilters).map((key) => (
-            <label key={key} className="dbCheckBoxesLabel"style={{ marginRight: '15px' }}>
+            <label key={key} className="dbCheckBoxesLabel" style={dbSearchBarStyle}
+>
                 <input
 					className="dbCheckBoxes"
                     type="checkbox"
@@ -55,6 +59,7 @@ export default function SearchBar({ onSearchChange, onFilterChange }) {
         <div className="dbUITop">
             <input
 				className="dbSearchBar"
+				style={dbSearchBarStyle}
                 type="text"
                 onChange={(e) => onSearchChange(e.target.value)}
                 placeholder="Search in Database (Feature Under Construction)"

@@ -1,0 +1,175 @@
+.project {
+	padding: 10vh 10vw 10vh 10vw;
+	height: 95vh;
+	background-color: #333;
+	clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+	color: white;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 100%;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 9vh;
+		bottom: 9vh;
+		left: 9vw;
+		right: 9vw;
+		border: 1px solid white;
+		border-top: none;
+		pointer-events: none;
+		animation: rotate360 10s linear infinite;
+		transform-origin: top left;
+	}
+	
+	&__text-content {
+		margin: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	&__title {
+		display: block;
+		font-weight: 100;
+		font-size: 4rem;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+	
+	&__description {
+		display: block;
+		font-weight: 400;
+		font-size: 2rem;
+		line-height: 2.2rem;
+		text-align: center;
+		padding: 1rem;
+	}
+	
+	&__button {
+		&:link,
+		&:visited {
+			width: 23rem;
+			white-space: nowrap;
+			background-color: #511a75;
+			text-transform: uppercase;
+			border-bottom: 2px solid #444;	
+			text-decoration: none;
+			color: inherit;
+			font-size: 3rem;
+			font-weight: 700;
+			transition: all .3s;
+			transform: skew(-5deg);
+			border-radius: 3px;
+		}
+		
+		&:hover {
+			transform: scale(1.1) skew(-5deg);
+			background-color: #511a75;
+		}
+		&:active {
+		
+		}
+		
+	}
+	
+	&__skills {
+		height: 5vh;
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+	}
+	
+	&__skill {
+		display: inline-block;
+		margin-left: 2rem;
+		position: relative;
+		transition: all .3s;
+		transform-origin: bottom;
+		border-bottom: 1px solid white;
+		&:hover {
+			font-size: 1.8rem;
+		}
+		
+		&:hover > * {
+			transform: scale(1.1);
+		}
+	}
+	
+	&__skill-dropdown {
+		position: absolute;
+		top: 2.5rem;
+		background-color: white;
+		width: auto;
+		white-space: nowrap;
+		padding: 1rem;
+		border-radius: 3px;
+		font-size: 1.6rem;
+		transform: scale(0);
+		transition: all .3s;
+		transform-origin: top left;
+	}
+	
+	&__skill-item {
+		border-bottom: 1px solid black;
+		padding-top: 10px;
+		color: black;
+	}
+
+	&__frame {
+	margin: auto;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		padding: 2rem;
+		transition: transform 0.3s ease;
+		-webkit-backface-visibility: hidden;
+		&:hover {
+			transform: scale(1.1);
+		}
+		&:hover > * {
+			outline: 2px solid white;
+		}
+	}
+	
+	&__image {
+		max-width: 50rem;
+		box-sizing: content-box;
+		display: block;
+		border-radius: 3px;
+	}
+	@media (max-width: 550px) {
+		&__title {
+			font-size: 2rem;
+		}
+		&__description {
+			font-size: 1.5rem;
+			line-height: 1.8rem;
+
+		}
+		&__button {
+			&:link,
+			&:visited {
+				font-size: 1.5rem;
+				width: 12rem;
+			}
+		}
+		&__image {
+			max-width: 99%;
+		}
+	}
+	@media (min-width: 551px) and (max-width: 750px) {
+		&__title {
+			font-size: 3.5rem;
+		}
+		&__description {
+			font-size: 2rem;
+			line-height: 1.8rem;
+		}
+		&__image {
+			max-width: 90%;
+		}
+	}
+}

@@ -24,7 +24,8 @@
 	border-top-right-radius: 10px;
 	margin: 5px;
 	margin-bottom: 0;
-	font-size: 1.3rem;
+	font-size: 2rem;
+	color: black;
 }
 .PollingWindow {
 	width: max(95vw, 350px);
@@ -42,7 +43,7 @@
 	cursor: pointer;
 	user-select: none;
 	width: max(13vw, 90px);
-	height: 3vh;
+	height: 4vh;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 	margin: 10px;
@@ -69,6 +70,9 @@
 	border-color: black;
 	background-color: white;
 }
+.poll-container h2 {
+	text-align: center;
+}
 .poll-container.dark {
 	color: white;
 	border-color: white;
@@ -89,7 +93,7 @@
   cursor: pointer;
   flex-grow: 1;
   flex-basis: 0;
-  height: 25vh;
+  height: 35vh;
   border-radius: 10px;
   display: flex;
   flex-direction: column;

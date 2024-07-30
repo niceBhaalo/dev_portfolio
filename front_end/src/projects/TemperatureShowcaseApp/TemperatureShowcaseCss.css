@@ -30,14 +30,15 @@
     flex-direction: column;
     align-items: center;
     padding-top: 2vh;
+    border: 5px solid;
 }
 .TemperatureCard.light {
 	background-color: #e3e2e1;
-
+	border-color: black;
 }
 .TemperatureCard.dark {
 	background-color: #383838;
-
+	border-color: white;
 }
 
 .TemperatureDisplay {
@@ -53,7 +54,16 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border: 5px solid;
 }
+
+.TemperatureDisplay.light {
+	border-color: black;
+}
+.TemperatureDisplay.dark {
+	border-color: white;
+}
+
 .TemperatureText {
   position: absolute;
   top: 50%;
@@ -71,16 +81,18 @@
 	border-radius: 10%;
 	height: 50px;
 	font-size: 45px;
-	border: none;
+	border: 3px solid;
 	padding: 0;
   font-family: 'Roboto'; /* Use Roboto font */
 }
 .TemperatureButton.light {
 	background-color: #3d0d14;
+	border-color: black;
 
 }
 .TemperatureButton.dark {
 	background-color: #d1263f;
+	border-color: white;
 
 }
 .TemperatureButton:active {
@@ -95,14 +107,12 @@
 	align-items: center;
 }
 .TemperatureLocationName {
-	font-size: 4vh;
-}
-.TemperatureLocationName:last-child {
-	margin-bottom: 2vh
+	font-size: 3rem;
+	margin: auto;
 }
 .TemperatureComparisonText {
-	font-size: 3vh;
-	margin: 2vh 0 2vh 0;
+	font-size: 2rem;
+	margin: auto;
 	text-align: center;
 	white-space: nowrap;
 }
@@ -110,7 +120,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
 	width: 85%;
 	height: 25vh;
 	border-radius: 5px;

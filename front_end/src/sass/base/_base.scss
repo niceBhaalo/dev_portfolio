@@ -10,8 +10,12 @@ html {
 
 
 body {
-
-	padding: 3rem;
+	padding: 1rem;
 	box-sizing: border-box;
+	max-width: 100vw;
+	background-color: #f7f7f7;
+}
 
+.App {
+	max-width: 100%;
 }

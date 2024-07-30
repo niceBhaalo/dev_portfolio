@@ -44,8 +44,6 @@ export default function SubscribeDialogBox({showDialogBox, onClick, settingSubbe
 		backgroundColor: 'red',
 		borderColor: theme === 'light' ? dark : light,
 		color: theme === 'light' ? 'black' : 'white',
-		left: '50%',
-		transform: 'translateX(-50%)',
 	};
 	let inputStyle = {
 		outline: `2px solid ${invalidEmail === 'none' ? 'black' : invalidEmail === 'correct' ? 'green' : 'red'}`,
@@ -203,20 +201,20 @@ export default function SubscribeDialogBox({showDialogBox, onClick, settingSubbe
 				</div>}				 
 			</>)}
 			{state === states.SUBSCRIBED && <div
-					style={successStyle}
+				className="title"
 				>
 					You have subscribed successfully.
 				</div>
 			}
 			{state === states.SHOW_UNSUB && (<div
-				style={unSubStyle}
+				className="title"
 				>
 				Are You Sure You Want To&nbsp;
 				<span style={linkStyle} onClick={handleUnSubbed}>Unsubscribe</span>?
 				</div>)
 			}
 			{state === states.UNSUBSCRIBED && (<div
-				style={unSubStyle}
+				className="title"
 				>
 				You Have Successfully Unsubscribed. You can subscribe again&nbsp;
 				<span style={linkStyle} onClick={handleSubAgain}>here</span>.

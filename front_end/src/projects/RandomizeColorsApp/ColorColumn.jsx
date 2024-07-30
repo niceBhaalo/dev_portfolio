@@ -49,9 +49,6 @@ export default function ColorColumn() {
 				<ChevronRight onClick={() => handleNext(setColor, history, location, setLocation)} />
 			</div>
 		</div>
-	
-	
-	
 	);
 
 }

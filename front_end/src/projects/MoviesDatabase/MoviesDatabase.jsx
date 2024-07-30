@@ -20,7 +20,7 @@ export default function MoviesDatabase() {
 	const [cardFilters, setCardFilters] = useState([]);
 	let parentDivStyle = {
 		backgroundColor: theme === 'light' ? light : dark,
-		color: theme === 'light' ? dark : light,
+		color: dark,
 	};
 	let newEntryButtonStyle = {
 		backgroundColor: theme === 'light' ? dark : light,

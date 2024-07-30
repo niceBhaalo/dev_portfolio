@@ -102,8 +102,8 @@
 	position: absolute;
 	top: 5px;
 	right: 5px;
-	width: 40px;
-	height: 40px;
+	width: 7rem;
+	height: 7rem;
 	border-radius: 10px;
 	border: 1px solid;
 	padding: 5px;
@@ -268,6 +268,8 @@
 	width: min(300px, 19vw);
 	height: auto;
 	float: left;
+	  color: black;
+
 }
 
 
@@ -357,7 +359,6 @@
 .dbCheckBoxesLabel {
     display: inline-block;
     font-family: Arial, sans-serif;
-    color: #333;
     margin-right: 15px;
     cursor: pointer;
 }

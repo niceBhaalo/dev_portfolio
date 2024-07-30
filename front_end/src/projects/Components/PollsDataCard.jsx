@@ -68,7 +68,7 @@ const PollsDataCard = ({ pollData, pollType }) => {
               <div className="poll-result">{calculatePercentage(pollResult[option.toLowerCase()])}</div>
             )}
             {pollType === 'Open' && selectedOption === option && !pollResult && (
-              <button className="submit-button" onClick={handleSubmit}>
+              <button className="poll-button" onClick={handleSubmit}>
                 Submit
               </button>
             )}
